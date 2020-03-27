@@ -1,16 +1,6 @@
-import React, {useEffect, useRef} from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import {TimelineMax, Bounce} from "gsap";
-import '../Header/header.css'
 
-const Wrapper = styled.div`
-position: absolute;
-display: flex;
-flex-flow: row wrap;
-margin-left: 10rem;
-margin-top: 16rem;
- 
-`
 const Hr = styled.hr`
 width: 100%;
 border: none;
@@ -52,16 +42,6 @@ const Circle = styled.circle`
     animation-delay: 2.6s;
 `
 
-const Dot = styled.span`
-display: block;
-background-color:#FF5851;
-width: 40px;
-height: 40px;
-border-radius: 50%;
-position: absolute;
-bottom: 20px;
-left: 380px;
-`
 
 const VerLine = styled.span`
 display:flex;
@@ -84,31 +64,10 @@ const HorLine = styled.span`
 `
 
 
-const Header = () => {
-
-    let dot = useRef(null)
-    let element;
-
-    useEffect(() => {
-        dotEntrance()
-        return () => {
-            dotEntrance()
-        }
-    })
-
-    const dotEntrance = () => {
-        element = dot.current
-  
-        const tl = new TimelineMax()
-
-        tl.delay(3).fromTo(element, 1, {transform: "rotateX(-90deg)",  transformOrigin: "top"}, {ease: Bounce.easeOut, transform: "rotateX(0deg)",  transformOrigin: "top"})
-
-    }
-
-
+function Letters() {
     return (
-        <Wrapper>
-            <LetterH>
+        <>
+                <LetterH>
                 <VerLine style={{
                     animation: "verLine .6s forwards", 
                     animationDelay: "2s"}}/>
@@ -180,14 +139,12 @@ const Header = () => {
             </LetterL>
 
             <LetterO>
-            <svg viewBox="0 0 290 290" xmlns="http://www.w3.org/2000/svg">
-                <Circle cx="135" cy="135" r="100"/>
-            </svg>
+                <svg viewBox="0 0 290 290" xmlns="http://www.w3.org/2000/svg">
+                    <Circle cx="135" cy="135" r="100"/>
+                </svg>
             </LetterO>
-            <Dot ref={dot}/>
-            
-        </Wrapper>
+    </>
     )
 }
 
-export default Header
+export default Letters

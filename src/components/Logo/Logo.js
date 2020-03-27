@@ -2,19 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-font-family: 'Baloo Da 2', cursive;
-font-weight: 600;
+font-weight: 500;
 font-size: 1.2rem;
 position: absolute;
-top: 0;
-left: 3rem;
+transition: 1s;
+top: ${({isMoved}) => isMoved ? "1.6rem" : "0.8rem" };
+left: ${({isMoved}) => isMoved ? "6.2rem" : "3.1rem" };
 color: black;
-right: 1.6rem;
+z-index:3;
 `
 
-function Logo() {
+function Logo({isBarOpen}) {
     return (
-        <Wrapper>
+        <Wrapper isMoved={isBarOpen}>
             by Maciej Pietrolaj
         </Wrapper>
     )

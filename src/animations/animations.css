@@ -44,3 +44,43 @@
         transform: translate(0);
       }
   }
+
+  /* Sidebar */
+
+  @keyframes button {
+      0%, 80% {
+        transform: translate(-120px);
+      }
+      100% {
+        transform: translate(0px);
+      }
+  } 
+
+  @keyframes sidebar {
+      0% ,99% {
+          opacity: 0;
+      }
+      100% {
+        opacity: 1;
+    }
+  }
+
+  .active::before {
+      content: '';
+      position: absolute;
+      margin-top: 1rem;
+      left: 7%;
+      width: 0%;
+      height: 1.2rem;
+      z-index: -1; 
+      animation: menuUnderline .6ss forwards; 
+  }
+
+  @keyframes menuUnderline {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 93%;
+    }
+  }
