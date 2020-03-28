@@ -26,19 +26,17 @@ height: 160px;
 const LetterO = styled.div`
 width: 180px;
 height: 180px;
-border-radius: 50%;
 `
 
 const Circle = styled.circle`
     fill: none;
     stroke: #1C1B20;
     stroke-width: 70px;
-    fill: none;
     stroke-dasharray: 650;
     stroke-dashoffset: 650;
     transform: scale(1);
     origin: center;
-    animation: fillCircle 1s linear forwards;
+    animation: fillCircle 2s linear forwards;
     animation-delay: 2.6s;
 `
 
@@ -139,7 +137,7 @@ function Letters() {
             </LetterL>
 
             <LetterO>
-                <svg viewBox="0 0 290 290" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 290 290">
                     <Circle cx="135" cy="135" r="100"/>
                 </svg>
             </LetterO>

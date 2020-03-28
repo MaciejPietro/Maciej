@@ -1,5 +1,8 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useRef, useContext} from 'react'
+import {NavLink} from 'react-router-dom'
+
 import styled from 'styled-components'
+import { LanguageContext } from '../../contexts/LanguageContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faFacebook, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import {TimelineMax} from 'gsap'
@@ -44,6 +47,12 @@ z-index:0;
             } 
         }};
     }
+    @media (max-width: 676px) {
+        font-size: 2rem;
+        letter-spacing: 0.14rem;
+        list-style: none;
+        margin: .4rem 0 0 0;
+    }
 `
 const Contact = styled.div`
 width: 100%;
@@ -80,13 +89,13 @@ font-size: .8rem;
 `
 
 
-function Menu({isBarOpen}) {
-    let menu = useRef(null)
+function Menu({isBarOpen, toggle}) {
+    let menu = useRef(null);
+    const { language } = useContext(LanguageContext);
 
     useEffect(() => {
         const fadeIn = () => {
             const tl = new TimelineMax()
-    
             if(isBarOpen) {
                 tl.delay(0.6)
                 .to(menu.current, 0.6, {opacity: "1", transform: "translateY(0)"})
@@ -109,12 +118,36 @@ function Menu({isBarOpen}) {
     return (
         
         <Wrapper ref={menu}>
-            <List>
-                <ListItem onMouseEnter={enterItem.bind(this)} onMouseLeave={leaveItem.bind(this)} pink>Strona Glowna</ListItem>
-                <ListItem onMouseEnter={enterItem.bind(this)} onMouseLeave={leaveItem.bind(this)} purple> O mnie</ListItem>
-                <ListItem onMouseEnter={enterItem.bind(this)} onMouseLeave={leaveItem.bind(this)} yellow>Ujetnosci</ListItem>
-                <ListItem onMouseEnter={enterItem.bind(this)} onMouseLeave={leaveItem.bind(this)} darkcyan>Projekty</ListItem>
-                <ListItem onMouseEnter={enterItem.bind(this)} onMouseLeave={leaveItem.bind(this)} green>Kontakt</ListItem>
+            <List >
+                <NavLink exact to='/'>
+                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={toggle} pink>
+                        {language === "PL" ? "Glowna" : "Home"}
+                    </ListItem>
+                </NavLink>
+
+                <NavLink to='/about'>
+                    <ListItem  onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={toggle} purple>
+                        {language === "PL" ? "O mnie" : "About"}
+                    </ListItem>
+                </NavLink>
+
+                <NavLink to='/skills'>
+                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={toggle} yellow>
+                        {language === "PL" ? "Umiejetnosci" : "Skills"}
+                    </ListItem>
+                </NavLink>
+
+                <NavLink to='/projects'>
+                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={toggle} darkcyan>
+                        {language === "PL" ? "Projekty" : "My Projects"}
+                    </ListItem>
+                </NavLink>
+
+                <NavLink to='/contact'>
+                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={toggle} green>
+                        {language === "PL" ? "Kontakt" : "Contact"}
+                    </ListItem>
+                </NavLink>
             </List> 
             <Contact>
                 <Adress>Polska, Wyrzysk</Adress>

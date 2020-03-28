@@ -1,5 +1,7 @@
 import React from 'react';
-import Home from './containers/Home/Home'
+import Base from './containers/Base/Base'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { LanguageProvider } from './contexts/LanguageContext'
 import './animations/animations.css'
 import {createGlobalStyle} from 'styled-components'
 import Rockout from './img/Rockout.ttf'
@@ -12,7 +14,7 @@ const Global = createGlobalStyle`
   font-style: normal;
 }
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   margin: 0;
   font-family: 'Rockout', cursive;
 }
@@ -21,11 +23,12 @@ body {
 
 function App() {
   return (
-    <>
+    <LanguageProvider>
       <Global />
-      <Home>
-      </Home>
-    </>
+      <Router>
+        <Route path='/' component={Base}/>
+      </Router>
+    </LanguageProvider>
   );
 }
 

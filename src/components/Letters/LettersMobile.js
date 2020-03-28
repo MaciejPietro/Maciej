@@ -7,25 +7,25 @@ border: none;
 `
 
 const LetterH = styled.div`
-width: 150px;
-height: 160px;
+width: 75px;
+height: 80px;
 `
 
 const LetterE = styled.div`
-width: 150px;
-height: 160px;
+width: 75px;
+height: 80px;
 page-break-after: always; 
 break-after: always; 
 
 `
 const LetterL = styled.div`
-width: 100px;
-height: 160px;
+width: 60px;
+height: 80px;
 `
 
 const LetterO = styled.div`
-width: 180px;
-height: 180px;
+width: 90px;
+height: 90px;
 border-radius: 50%;
 `
 
@@ -38,7 +38,7 @@ const Circle = styled.circle`
     stroke-dashoffset: 650;
     transform: scale(1);
     origin: center;
-    animation: fillCircle 1s linear forwards;
+    animation: fillCircleMobile 1s linear forwards;
     animation-delay: 2.6s;
 `
 
@@ -46,7 +46,7 @@ const Circle = styled.circle`
 const VerLine = styled.span`
 display:flex;
 position: absolute;
-width: 44px;
+width: 22px;
 height: 0px;
 background-color: #1C1B20;
 animation: verLine 2s;
@@ -57,9 +57,9 @@ const HorLine = styled.span`
         position: absolute;
         background-color: #1C1B20;
         width: 0px;
-        height: 50px;
-        margin-left: 44px;
-        margin-top: 60px;  
+        height: 25px;
+        margin-left: 22px;
+        margin-top: 30px;  
         animation: horLine 2s;    
 `
 
@@ -69,14 +69,14 @@ function Letters() {
         <>
                 <LetterH>
                 <VerLine style={{
-                    animation: "verLine .6s forwards", 
+                    animation: "verLineMobile .6s forwards", 
                     animationDelay: "2s"}}/>
                 <HorLine style={{
-                    animation: "horLine .6s forwards", 
+                    animation: "horLineMobile .6s forwards", 
                     animationDelay: "2.5s"}}/>
                 <VerLine style={{
-                    marginLeft: "88px",
-                    animation: "verLine .6s forwards", 
+                    marginLeft: "44px",
+                    animation: "verLineMobile .6s forwards", 
                     animationDelay: "2.3s"}}/>
             </LetterH>
 
@@ -89,24 +89,24 @@ function Letters() {
 
             <LetterE>
                 <VerLine style={{
-                    animation: "verLine .6s forwards", 
+                    animation: "verLineMobile .6s forwards", 
                     animationDelay: "2.5s"}}/>
 
                 <HorLine style={{
-                    marginTop: "120px", 
-                    height: "40px", 
-                    animation: "horLineE .6s forwards", 
+                    marginTop: "60px", 
+                    height: "20px", 
+                    animation: "horLineEMobile .6s forwards", 
                     animationDelay: "3.1s"}}/>
 
                 <HorLine style={{
-                    height: "40px",
-                    animation: "horLine .6s forwards", 
+                    height: "20px",
+                    animation: "horLineMobile .6s forwards", 
                     animationDelay: "3.3s"}}/>
 
                 <HorLine style={{
                     marginTop: "-0px", 
-                    height: "40px",
-                    animation: "horLineE .6s forwards", 
+                    height: "20px",
+                    animation: "horLineEMobile .6s forwards", 
                     animationDelay: "3.5s"}}/>
 
             </LetterE>
@@ -115,26 +115,26 @@ function Letters() {
 
             <LetterL>
                 <VerLine style={{
-                    animation: "verLine .6s forwards", 
+                    animation: "verLineMobile .6s forwards", 
                     animationDelay: "2.3s"}}/>
 
                 <HorLine style={{
-                    marginTop: "120px", 
-                    height: "40px",
-                    animation: "horLineE .6s forwards", 
+                    marginTop: "60px", 
+                    height: "20px",
+                    animation: "horLineEMobile .6s forwards", 
                     animationDelay: "2.9s"}}/>
             </LetterL>
 
 
             <LetterL>
                 <VerLine style={{
-                    animation: "verLine .6s forwards", 
+                    animation: "verLineMobile .6s forwards", 
                     animationDelay: "2.6s"}}/>
 
                 <HorLine style={{
-                    marginTop: "120px", 
-                    height: "40px",
-                    animation: "horLineE .6s forwards", 
+                    marginTop: "60px", 
+                    height: "20px",
+                    animation: "horLineEMobile .6s forwards", 
                     animationDelay: "3.1s"}}/>
             </LetterL>
 

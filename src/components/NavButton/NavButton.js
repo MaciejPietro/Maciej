@@ -11,7 +11,7 @@ top: 46vh;
 transition: 1s;
 left: ${({isOpen}) => isOpen ? "13vw" : "2vw"};
 z-index: 3;
-animation: button 3s forwards;
+animation: slideFromLeft 3s forwards;
     &:hover {
         span:first-child {
             width: ${({isOpen}) => isOpen ? "2rem" : "1.8rem"};
@@ -30,8 +30,14 @@ animation: button 3s forwards;
         }
     }
     @media (max-width: 676px) {
-        top: ${({isOpen}) => isOpen ? "18vh" : "46vh"};
-        left: ${({isOpen}) => isOpen ? "10vw" : "2vw"};
+        top: 2rem;
+        left: 74vw;
+        background-color: white;
+        border-radius: 50%;
+        height: 40px;
+        width: 52px;
+        padding: 20px 0 0 8px;
+        animation: slideFromRight 3s forwards;
     }
 `
 
@@ -65,6 +71,8 @@ display: block;
 transition: .5s;
 margin-left: ${({isOpen}) => isOpen ? "0rem" : "0.4rem"};
 transform: ${({isOpen}) => isOpen ? "rotate(45deg) translateY(-10px)" : "rotate(0deg)"};
+@media (max-width: 676px) {
+}
 `
 const Text = styled.h6`
 color:black;
@@ -77,12 +85,15 @@ font-weight: 400;
 letter-spacing: 2px;
 transition: 0.6s;
 opacity: ${({isOpen}) => isOpen ? "0" : "1"};
+@media (max-width: 676px) {
+    display: none;
+}
 `
 
-const NavButton = ({enter, leave, open, isOpen}) => {
+const NavButton = ({enter, hide, toggle, isOpen}) => {
     return (
         <Wrapper>
-            <Button onMouseEnter={enter} onMouseLeave={leave} onClick={open} isOpen={isOpen}>
+            <Button onMouseEnter={enter} onMouseLeave={hide} onClick={toggle} isOpen={isOpen}>
                 <Top isOpen={isOpen}/>
                 <Center isOpen={isOpen}/>
                 <Bottom isOpen={isOpen}/>    

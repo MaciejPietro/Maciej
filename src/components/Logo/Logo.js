@@ -10,6 +10,10 @@ top: ${({isMoved}) => isMoved ? "1.6rem" : "0.8rem" };
 left: ${({isMoved}) => isMoved ? "6.2rem" : "3.1rem" };
 color: black;
 z-index:3;
+animation: slideFromTop 3s forwards;
+@media (max-width: 676px) {
+    display:none;
+}
 `
 
 function Logo({isBarOpen}) {

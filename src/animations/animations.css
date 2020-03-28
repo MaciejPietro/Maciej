@@ -1,3 +1,61 @@
+/* Loader */
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  25% {
+    transform: rotate(180deg);
+  }
+  
+  50% {
+    transform: rotate(180deg);
+  }
+  
+  75% {
+    transform: rotate(360deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+  
+  25% {
+    height: 0%;
+  }
+  
+  50% {
+    height: 100%;
+  }
+  
+  75% {
+    height: 100%;
+  }
+  
+  100% {
+    height: 0%;
+  }
+}
+
+@keyframes loaderFadeOut {
+  0% {
+    opacity: 1;
+  }  
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* Letters */
+
 @keyframes horLine {
     0% {
         width: 0px;
@@ -34,6 +92,44 @@
     stroke-dashoffset: 0}
   }
 
+  /* Letters Mobile */
+
+  @keyframes horLineMobile{
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 22px;
+    }
+}
+
+@keyframes horLineEMobile {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 32px;
+    }
+}
+
+@keyframes verLineMobile {
+    0% {
+        height: 0px;
+    }
+    100% {
+        height: 80px;
+    }
+}
+
+  
+@keyframes fillCircleMobile{
+  0%{
+    stroke-dashoffset: 650}
+
+  100%{
+    stroke-dashoffset: 0}
+  }
+
   /* Nav Lines */
 
   @keyframes navLineEntrance {
@@ -47,14 +143,31 @@
 
   /* Sidebar */
 
-  @keyframes button {
+  @keyframes slideFromLeft {
       0%, 80% {
-        transform: translate(-120px);
+        transform: translate(-20rem);
       }
       100% {
-        transform: translate(0px);
+        transform: translate(0);
       }
   } 
+  @keyframes slideFromRight {
+    0%, 80% {
+      transform: translate(20rem);
+    }
+    100% {
+      transform: translate(0px);
+    }
+} 
+
+@keyframes slideFromTop {
+  0%, 80% {
+    transform: translateY(-20rem);
+  }
+  100% {
+    transform: translate(0);
+  }
+} 
 
   @keyframes sidebar {
       0% ,99% {
@@ -73,7 +186,7 @@
       width: 0%;
       height: 1.2rem;
       z-index: -1; 
-      animation: menuUnderline .6ss forwards; 
+      animation: menuUnderline .6s forwards; 
   }
 
   @keyframes menuUnderline {
