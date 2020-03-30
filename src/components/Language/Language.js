@@ -10,7 +10,7 @@ flex-direction: row;
 color: black;
 animation: slideFromTop 3s forwards;
  @media (max-width: 676px) {
-    top: -1rem;
+    display: none;
     right: 6%;
  }
 `

@@ -5,11 +5,10 @@ const Wrapper = styled.span`
     display: inline-block;
     width: 60px;
     height: 60px;
-    position: relative;
+    position: absolute;
     border: 4px solid #Fff;
-    top: 0%;
+    top: 46%;
     animation: loader 1.6s infinite ease, loaderFadeOut .6s forwards 1.6s;
-
 `
 
 const Fill = styled.span`

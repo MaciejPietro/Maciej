@@ -1,18 +1,41 @@
 import React, { useRef, useEffect } from 'react'
 import Letters from '../../components/Letters/Letters'
 import LettersMobile from '../../components/Letters/LettersMobile'
+import ScrollIcon from '../../components/ScrollIcon/ScrollIcon'
 import {TimelineMax, Bounce } from "gsap";
 import styled from 'styled-components'
 
+
+
+const RightBlock = styled.div`
+background-color: #F8F8F8;
+display: ${({pathName}) => pathName === "/" ? "block" : "none"};
+color: #fff;
+margin: 3vw 3vw 3vw 0;
+display: flex;
+flex-grow: 1;
+align-items: center;
+justify-content: center;    
+width: 46vw;
+ @media (max-width: 676px) {
+    div:first-child {
+        display: none;
+    }
+ }
+`
 
 const HeaderWrapper = styled.div`
 position: absolute;
 display: flex;
 flex-flow: row wrap;
-margin-left: 12vw;
-margin-top: 16rem;
+top: 28%;
+left: 38%;
+z-index: 4;
  @media (max-width: 991px) {
-    margin-left: 16vw;
+    left: 28%;
+ }
+ @media (max-width: 567px) {
+    left: 24%;
  }
 `
 const Dot = styled.span`
@@ -26,31 +49,40 @@ bottom: 20px;
 left: 380px;
 `
 
-const Home = () => {
-
+const Home = (props) => {
     let dot = useRef(null);
-
     useEffect(() => { 
         const dotEntrance = () => {
             const tl = new TimelineMax();
-            tl.delay(3).fromTo(
-                dot.current, 
-                1, 
-                {transform: "rotateX(-90deg)",  transformOrigin: "top"}, 
-                {ease: Bounce.easeOut, transform: "rotateX(0deg)",  
-                transformOrigin: "top"});
+            if(dot.current) {
+                tl.delay(3).fromTo(
+                    dot.current, 
+                    1, 
+                    {transform: "rotateX(-90deg)",  transformOrigin: "top"}, 
+                    {ease: Bounce.easeOut, transform: "rotateX(0deg)",  
+                    transformOrigin: "top"});
+            }
         }
         dotEntrance();
+
         return () => {
-            dotEntrance()
+            dotEntrance();
         }
     }, [])
 
-        return (
-                            <HeaderWrapper>    
-                                {window.innerWidth < 676 ?  <LettersMobile /> : <Letters />}
-                                {window.innerWidth < 676 ?  '' : <Dot />}
-                            </HeaderWrapper>
+
+   
+
+
+        return (    
+            <>  
+                {/* <LeftBlock ref={leftBlock} isBarOpen={isBarOpen} pathName={props.location.pathname} /> */}
+                    <HeaderWrapper>    
+                        {window.innerWidth < 576 ?  <LettersMobile /> : <Letters />}
+                        {window.innerWidth < 676 ?  '' : <Dot ref={dot}/>}                   
+                    </HeaderWrapper>  
+                    <RightBlock><ScrollIcon /></RightBlock>
+            </>  
         )
 }
 

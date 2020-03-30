@@ -1,8 +1,10 @@
 import React, {useEffect, useRef, useContext} from 'react'
 import {NavLink} from 'react-router-dom'
-
 import styled from 'styled-components'
+
 import { LanguageContext } from '../../contexts/LanguageContext'
+import { NavbarContext } from '../../contexts/NavbarContext'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faFacebook, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import {TimelineMax} from 'gsap'
@@ -23,8 +25,14 @@ top: 22vh;
     }
 `
 const List = styled.ul`
-
+    
 `
+const StyledLink = styled(NavLink)`
+    text-decoration: none;
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`;
 const ListItem = styled.li`
 color: black;
 font-size: 3rem;
@@ -33,11 +41,11 @@ list-style: none;
 margin: .7rem 0 0 0;
 z-index:0;
     &::before {
-        background-color: ${({pink, purple, yellow, darkcyan, green}) => {
+        background-color: ${({pink, blue, yellow, darkcyan, green}) => {
             if(pink) {
-                return "pink"
-            } else if(purple) {
-                return "purple"
+                return "#FF5851"
+            } else if(blue) {
+                return "#414A6B"
             } else if(yellow) {
                 return "yellow"
             } else if(darkcyan) {
@@ -46,6 +54,7 @@ z-index:0;
                 return "green"
             } 
         }};
+        opacity: .5;
     }
     @media (max-width: 676px) {
         font-size: 2rem;
@@ -89,9 +98,11 @@ font-size: .8rem;
 `
 
 
-function Menu({isBarOpen, toggle}) {
+function Menu({ changeSection }) {
     let menu = useRef(null);
     const { language } = useContext(LanguageContext);
+    const { isBarOpen } = useContext(NavbarContext);
+
 
     useEffect(() => {
         const fadeIn = () => {
@@ -119,35 +130,35 @@ function Menu({isBarOpen, toggle}) {
         
         <Wrapper ref={menu}>
             <List >
-                <NavLink exact to='/'>
-                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={toggle} pink>
+                <StyledLink exact to='/'>
+                    <ListItem data-key="home" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} pink>
                         {language === "PL" ? "Glowna" : "Home"}
                     </ListItem>
-                </NavLink>
+                </StyledLink>
 
-                <NavLink to='/about'>
-                    <ListItem  onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={toggle} purple>
+                <StyledLink to='/about'>
+                    <ListItem data-key="about" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} blue>
                         {language === "PL" ? "O mnie" : "About"}
                     </ListItem>
-                </NavLink>
+                </StyledLink>
 
-                <NavLink to='/skills'>
-                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={toggle} yellow>
+                <StyledLink to='/skills'>
+                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} yellow>
                         {language === "PL" ? "Umiejetnosci" : "Skills"}
                     </ListItem>
-                </NavLink>
+                </StyledLink>
 
-                <NavLink to='/projects'>
-                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={toggle} darkcyan>
+                <StyledLink to='/projects'>
+                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem}  darkcyan>
                         {language === "PL" ? "Projekty" : "My Projects"}
                     </ListItem>
-                </NavLink>
+                </StyledLink>
 
-                <NavLink to='/contact'>
-                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={toggle} green>
+                <StyledLink to='/contact'>
+                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} green>
                         {language === "PL" ? "Kontakt" : "Contact"}
                     </ListItem>
-                </NavLink>
+                </StyledLink>
             </List> 
             <Contact>
                 <Adress>Polska, Wyrzysk</Adress>

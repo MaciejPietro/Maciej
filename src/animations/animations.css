@@ -141,7 +141,7 @@
       }
   }
 
-  /* Sidebar */
+  /* Slides */
 
   @keyframes slideFromLeft {
       0%, 80% {
@@ -169,14 +169,20 @@
   }
 } 
 
-  @keyframes sidebar {
-      0% ,99% {
-          opacity: 0;
-      }
-      100% {
-        opacity: 1;
-    }
+
+@keyframes slideFromBottom {
+  0%, 80% {
+    transform: translateY(20rem);
   }
+  100% {
+    transform: translate(0);
+  }
+} 
+
+
+
+
+  /* Menu, Menu Underline */
 
   .active::before {
       content: '';
@@ -195,5 +201,23 @@
     }
     100% {
       width: 93%;
+    }
+  }
+
+  /* Scroll Icon */
+
+  .scroll-icon {
+    animation: 2s scrollArrow infinite;
+  }
+
+  @keyframes scrollArrow {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0.7rem);
+    }
+    0% {
+      transform: translateY(0);
     }
   }

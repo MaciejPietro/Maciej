@@ -3,20 +3,21 @@ import styled from 'styled-components'
 import Menu from '../Menu/Menu'
 import Language from '../Language/Language'
 import { LanguageContext } from '../../contexts/LanguageContext'
+import { NavbarContext } from '../../contexts/NavbarContext'
 
 const Wrapper = styled.div`
 height: 100vh;
-width:  70vw;
-transition: 1s;
-transform: ${({isVisible, isBarOpen}) => {
+width:  80vw;
+transition: .8s;
+transform: ${({isBarVisible, isBarOpen}) => {
     if(isBarOpen === true) {
-        return "translate(-12vw)"    
+        return "translate(-16vw)"    
     } else if(isBarOpen === false) {
-        return isVisible ? `translate(${window.innerWidth < 676 ? "-70vw" : "-55vw"})` : "translate(-66vw)"
+        return isBarVisible ? `translate(${window.innerWidth < 676 ? "-100vw" : "-84vw"})` : "translate(-100vw)"
     } 
 }};
 position: absolute;
-z-index: 2;
+z-index: 5;
 background-color: white;
 display: flex;
 animation: sidebar 2s;
@@ -33,13 +34,16 @@ div:first-child {
  }
 `
 
-const Sidebar = ({isVisible, isBarOpen, setPL, setENG, toggle}) => {
+const Sidebar = ({ setPL, setENG, changeSection}) => {
     const { language } = useContext(LanguageContext);
+    const { isBarOpen } = useContext(NavbarContext);
+    const { isBarVisible } = useContext(NavbarContext);
+
     return (
-        <Wrapper isVisible={isVisible} isBarOpen={isBarOpen}>
+        <Wrapper isBarVisible={isBarVisible} isBarOpen={isBarOpen}>
             <MenuContainter>
                 <Language setPL={setPL}  setENG={setENG} currentLanguage={language}/>
-                <Menu isBarOpen={isBarOpen} toggle={toggle}/>
+                <Menu changeSection={changeSection}/>
             </MenuContainter>
         </Wrapper>
     )

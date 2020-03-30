@@ -1,24 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { NavbarContext } from '../../contexts/NavbarContext'
 
 const Wrapper = styled.div`
 font-weight: 500;
 font-size: 1.2rem;
 position: absolute;
-transition: 1s;
-top: ${({isMoved}) => isMoved ? "1.6rem" : "0.8rem" };
-left: ${({isMoved}) => isMoved ? "6.2rem" : "3.1rem" };
+transition: .6s;
+top: ${({isBarOpen}) => isBarOpen ? "7.6rem" : "0.8rem" };
+left: ${({isBarOpen}) => isBarOpen ? "25vw" : "3.1rem" };
 color: black;
-z-index:3;
+z-index:6;
 animation: slideFromTop 3s forwards;
 @media (max-width: 676px) {
     display:none;
 }
 `
 
-function Logo({isBarOpen}) {
+function Logo() {
+
+    const { isBarOpen } = useContext(NavbarContext);
+
     return (
-        <Wrapper isMoved={isBarOpen}>
+        <Wrapper isBarOpen={isBarOpen}>
             by Maciej Pietrolaj
         </Wrapper>
     )

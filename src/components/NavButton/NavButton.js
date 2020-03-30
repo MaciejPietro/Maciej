@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { NavbarContext } from '../../contexts/NavbarContext'
 
 const Wrapper = styled.div`
 `
@@ -9,21 +10,21 @@ height: 60px;
 position: absolute;
 top: 46vh;
 transition: 1s;
-left: ${({isOpen}) => isOpen ? "13vw" : "2vw"};
-z-index: 3;
+left: ${({isBarOpen}) => isBarOpen ? "13vw" : "2vw"};
+z-index: 6;
 animation: slideFromLeft 3s forwards;
     &:hover {
         span:first-child {
-            width: ${({isOpen}) => isOpen ? "2rem" : "1.8rem"};
-            margin-left: ${({isOpen}) => isOpen ? "0rem" : "-0.2rem"};
+            width: ${({isBarOpen}) => isBarOpen ? "2rem" : "1.8rem"};
+            margin-left: ${({isBarOpen}) => isBarOpen ? "0rem" : "-0.2rem"};
         }
         span:nth-child(2) {
             width: 2.2rem;
             margin-left: -0.6rem;
         }
         span:nth-child(3) {
-            width: ${({isOpen}) => isOpen ? "2rem" : "2rem"};
-            margin-left: ${({isOpen}) => isOpen ? "0rem" : "-0.4rem"};
+            width: ${({isBarOpen}) => isBarOpen ? "2rem" : "2rem"};
+            margin-left: ${({isBarOpen}) => isBarOpen ? "0rem" : "-0.4rem"};
         }
         h6 {
             transform: rotate(0deg);
@@ -31,10 +32,10 @@ animation: slideFromLeft 3s forwards;
     }
     @media (max-width: 676px) {
         top: 2rem;
-        left: 74vw;
+        left: 76vw;
         background-color: white;
         border-radius: 50%;
-        height: 40px;
+        height: 38px;
         width: 52px;
         padding: 20px 0 0 8px;
         animation: slideFromRight 3s forwards;
@@ -42,15 +43,15 @@ animation: slideFromLeft 3s forwards;
 `
 
 const Top = styled.span`
-width: ${({isOpen}) => isOpen ? "2rem" : "1.4rem"};
+width: ${({isBarOpen}) => isBarOpen ? "2rem" : "1.4rem"};
 height: 2px;
 border-radius: 10%;
 background-color: black;
 display: block;
 margin-bottom: 4px;
 transition: .5s;
-margin-left: ${({isOpen}) => isOpen ? "0rem" : "0.2rem"};
-transform: ${({isOpen}) => isOpen ? "rotate(-45deg) translateY(8px)" : "rotate(0deg)"};
+margin-left: ${({isBarOpen}) => isBarOpen ? "0rem" : "0.2rem"};
+transform: ${({isBarOpen}) => isBarOpen ? "rotate(-45deg) translateY(8px)" : "rotate(0deg)"};
 `
 const Center = styled.span`
 width: 1.6rem;
@@ -58,47 +59,50 @@ height: 2px;
 border-radius: 10%;
 background-color: black;
 display: block;
-opacity: ${({isOpen}) => isOpen ? "0" : "1"};
+opacity: ${({isBarOpen}) => isBarOpen ? "0" : "1"};
 margin-bottom: 4px;
 transition: .5s;
 `
 const Bottom = styled.span`
-width: ${({isOpen}) => isOpen ? "2rem" : "1.2rem"};
+width: ${({isBarOpen}) => isBarOpen ? "2rem" : "1.2rem"};
 height: 2px;
 border-radius: 10%;
 background-color: black;
 display: block;
 transition: .5s;
-margin-left: ${({isOpen}) => isOpen ? "0rem" : "0.4rem"};
-transform: ${({isOpen}) => isOpen ? "rotate(45deg) translateY(-10px)" : "rotate(0deg)"};
+margin-left: ${({isBarOpen}) => isBarOpen ? "0rem" : "0.4rem"};
+transform: ${({isBarOpen}) => isBarOpen ? "rotate(45deg) translateY(-10px)" : "rotate(0deg)"};
 @media (max-width: 676px) {
 }
 `
 const Text = styled.h6`
 color:black;
 position: absolute;
-top: -2.4rem;
+top: -1.9rem;
 left:2rem;
-transform: ${({isOpen}) => isOpen ? "rotate(20deg)" : "rotate(90deg)"};
-font-size: 1rem;
+transform: rotate(-90deg);
+font-size: .8rem;
 font-weight: 400;
 letter-spacing: 2px;
 transition: 0.6s;
-opacity: ${({isOpen}) => isOpen ? "0" : "1"};
+opacity: ${({isBarOpen}) => isBarOpen ? "0" : "1"};
 @media (max-width: 676px) {
     display: none;
 }
 `
 
-const NavButton = ({enter, hide, toggle, isOpen}) => {
+const NavButton = ({enter, hide, toggle}) => {
+
+    const { isBarOpen } = useContext(NavbarContext);
+    
     return (
         <Wrapper>
-            <Button onMouseEnter={enter} onMouseLeave={hide} onClick={toggle} isOpen={isOpen}>
-                <Top isOpen={isOpen}/>
-                <Center isOpen={isOpen}/>
-                <Bottom isOpen={isOpen}/>    
+            <Button onMouseEnter={enter} onMouseLeave={hide} onClick={toggle} isBarOpen={isBarOpen}>
+                <Top isBarOpen={isBarOpen}/>
+                <Center isBarOpen={isBarOpen}/>
+                <Bottom isBarOpen={isBarOpen}/>    
                 
-                <Text isOpen={isOpen}>
+                <Text isBarOpen={isBarOpen}>
                     Menu
                 </Text>
             </Button>

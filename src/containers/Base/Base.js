@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
-import { Route, Switch } from 'react-router-dom';
+import React, { useContext, useEffect, useRef, useState  } from 'react'
+import { Route, Switch, useHistory } from 'react-router-dom';
 import { LanguageContext } from '../../contexts/LanguageContext'
+import { NavbarContext } from '../../contexts/NavbarContext'
 import { Power3, TimelineMax} from "gsap";
 import styled from 'styled-components'
 
@@ -21,52 +22,36 @@ const Container = styled.div`
   justify-content: center;
 `
 
-const LeftBlock = styled.div`
-transition: 1s;
-background-color: ${({pathName}) => pathName === "/" ? "#FF5851" : "darkcyan"};
+const Block = styled.div`
+transition: .8s background ease-out;
+background-color: ${({blockColor}) => blockColor === "home" ? "#FF5851" : "#414A6B"};
+display: flex;
 color: #fff;
 margin: 0;
-display: flex;
 flex-shrink: 0;
-align-items: center;
-justify-content: center;
-width: 100%;
- 
+z-index: 2;
 `
-
-const RightBlock = styled.div`
-background-color: #F8F8F8;
-color: #fff;
-margin: 3vw 3vw 3vw 0;
-display: flex;
-flex-grow: 1;
-align-items: center;
-justify-content: center;    
-width: 52%;
- @media (max-width: 676px) {
-    div:first-child {
-        display: none;
-    }
- }
-`
-
 
 
 const Base = (props) => {
-    const [isBarVisible, setBarVisible] = useState(false);
-    const [isBarOpen, setBarOpen] = useState(false);
-    let leftBlock = useRef(null);
-    let element;
+    let block = useRef(null);
     const { language, setLanguage } = useContext(LanguageContext);
+    const { isBarOpen, setBarOpen } = useContext(NavbarContext);
+    const [ blockColor, setBlockColor ] = useState("home")
+    const {  setBarVisible } = useContext(NavbarContext);
+    let history = useHistory()
 
+    useEffect((props) => { 
 
-    useEffect(() => { 
+        // window.addEventListener('mousewheel', props => {
+        //     history.push("/about");
+        // })
+    
         const animateHomeBlock = () => {
             let margin = window.innerWidth > 767 ? "2vw 0 3vw 3vw" : "0"
-            const tl = new TimelineMax()
-            
+            const tl = new TimelineMax()      
             tl.delay(1.5)
-            .fromTo(leftBlock.current, 0.6, {ease: Power3.easeOut, width: "120%", margin: 0}, {width: "48%", margin: `${margin}`});
+            .fromTo(block.current, 0.6, {ease: Power3.easeOut, width: "120%", margin: 0}, {width: "48%", margin: `${margin}`});
         }
         animateHomeBlock();
         return () => {
@@ -85,24 +70,45 @@ const Base = (props) => {
 
     const toggleSidebar = () => {
         setBarOpen(!isBarOpen);
-        element = leftBlock.current;
-
-        if(isBarOpen === false) {
-            const tl = new TimelineMax()
-            if(window.innerWidth < 776) {
-                tl.to(element, 0.6, {ease: Power3.easeOut, width: "90%", margin: "1.3rem"});
-            } else if (window.innerWidth > 776) {
-                tl.to(element, 0.6, {ease: Power3.easeOut, width: "90%", margin: "6vw 0 6vw 0vw"});
+        
+        const tl = new TimelineMax()
+            // switch (props.location.pathname) 
+                        if(isBarOpen === false) {
+                            if(window.innerWidth < 776 && block.current) {
+                                tl.to(block.current, 0.6, {ease: Power3.easeOut, width: "90%", margin: "1.3rem"});
+                            } else {
+                                console.log("wszedl")
+                                tl.to(block.current, 0.6, { width: "90%", margin: "6vw 0 6vw 0vw", display: "flex"});
+                            }}
+                         else if (isBarOpen === true) {                          
+                            if(window.innerWidth < 776 && block.current) {
+                                tl.to(block.current, 0.6, {ease: Power3.easeOut, width: "52%", margin: "0 0 0 0"});
+                            } else {
+                                tl.to(block.current, 0.6, {ease: Power3.easeOut, width: "52%", margin: "2vw 0 3vw 3vw"});
+                            }
+                        }   
+                        
             }
+    
 
-        } else if (isBarOpen === true) {
 
-            const tl = new TimelineMax()
-            if(window.innerWidth < 776) {
-                tl.to(element, 0.6, {ease: Power3.easeOut, width: "52%", margin: "0 0 0 0"});
-            } else if (window.innerWidth > 776) {
-                tl.to(element, 0.6, {ease: Power3.easeOut, width: "52%", margin: "2vw 0 3vw 3vw"});
-            }
+    const changeSection = (e) => {
+        const tl = new TimelineMax()
+        switch (e.target.dataset.key) {
+            case "home":
+                setBlockColor("home");
+                setBarOpen(!isBarOpen);
+                tl.delay(0.6)
+                .fromTo(block.current, 0.8, {ease: Power3.easeOut, width: "90%", margin: "6vw 0 6vw 0vw",}, {ease: Power3.easeOut, width: "50%"});
+                break;
+            case "about":
+                setBlockColor("about");
+                setBarOpen(!isBarOpen);    
+                tl.delay(0.6)
+                .fromTo(block.current, 0.8, {ease: Power3.easeOut, width: "90%", margin: "6vw 0 6vw 0vw", justifyContent: "flex-start",}, {ease: Power3.easeOut, width: "0%", marginRight: "80vw", display: "none"});
+
+                break;
+            default:
         }
     }
 
@@ -117,22 +123,17 @@ const Base = (props) => {
         return (
             <>
                 <Container>
-                    <Logo isBarOpen={isBarOpen}/>
-                    <LeftBlock ref={leftBlock} isBarOpen={isBarOpen} pathName={props.location.pathname}>
-                        <NavButton enter={showSidebar} hide={hideSidebar} toggle={toggleSidebar} isOpen={isBarOpen}/> 
-                        <Sidebar isVisible={isBarVisible} isBarOpen={isBarOpen} setPL={setPL}  setENG={setENG} currentLanguage={language} toggle={toggleSidebar}/>
+                        <Logo/>
+                        <NavButton enter={showSidebar} hide={hideSidebar} toggle={toggleSidebar}/> 
+                        <Sidebar setPL={setPL}  setENG={setENG} currentLanguage={language} changeSection={changeSection}/>
                         <Loading />
-                    </LeftBlock>
-
+                        <Block ref={block} blockColor={blockColor}/>
                             <Switch>    
                                 <Route path='/'  component={Home} exact/>
-                                <Route exact path='/about'  component={About}/>
+                                <Route  path='/about'  component={About}/>
                             </Switch> 
-
-                    <RightBlock>
                         <Language setPL={setPL}  setENG={setENG} currentLanguage={language}/>
                         <LineNav /> 
-                    </RightBlock>
                 </Container>
             </>
         )

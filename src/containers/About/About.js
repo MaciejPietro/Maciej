@@ -1,13 +1,28 @@
-import React, { Component } from 'react'
+import React, { useRef, useEffect } from 'react'
 
-export class About extends Component {
-    render() {
-        return (
-            <div>
-                <h1>COS TAM</h1>
-            </div>
+import Introduce from '../../components/Introduce/Introduce'
+import Pictures from '../../components/Pictures/Pictures'
+import {TimelineMax, Bounce } from "gsap";
+import styled from 'styled-components'
+
+const Wrapper = styled.section`
+z-index:1;
+position: absolute;
+`
+
+const ImgWrapper = styled.div`
+position: absolute;
+right: 3rem;
+bottom: 3rem;
+`
+
+const About = () => {
+ 
+        return (    
+            <Wrapper>
+                <Pictures />
+            </Wrapper>
         )
-    }
 }
 
 export default About
