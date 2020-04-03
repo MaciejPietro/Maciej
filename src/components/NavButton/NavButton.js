@@ -9,7 +9,7 @@ width: 60px;
 height: 60px;
 position: absolute;
 top: 46vh;
-transition: 1s;
+transition: .4s;
 left: ${({isBarOpen}) => isBarOpen ? "13vw" : "2vw"};
 z-index: 6;
 animation: slideFromLeft 3s forwards;
@@ -78,8 +78,8 @@ transform: ${({isBarOpen}) => isBarOpen ? "rotate(45deg) translateY(-10px)" : "r
 const Text = styled.h6`
 color:black;
 position: absolute;
-top: -1.9rem;
-left:2rem;
+top: 0;
+left:2.2rem;
 transform: rotate(-90deg);
 font-size: .8rem;
 font-weight: 400;

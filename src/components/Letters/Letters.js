@@ -36,7 +36,7 @@ const Circle = styled.circle`
     stroke-dashoffset: 650;
     transform: scale(1);
     origin: center;
-    animation: fillCircle 2s linear forwards;
+    animation: fillCircle 1s linear forwards;
     animation-delay: 2.6s;
 `
 

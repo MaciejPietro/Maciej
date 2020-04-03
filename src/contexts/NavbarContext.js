@@ -1,14 +1,13 @@
 
     import React, { useState, createContext } from 'react'
 
-    export const NavbarContext = createContext({section: "home"}, {isBarOpen: false} , {isBarVisible: false})
+    export const NavbarContext = createContext()
     
     export const NavbarProvider = props => {
-    const [section, setSection] = useState("home");
     const [isBarOpen, setBarOpen] = useState(false);
     const [isBarVisible, setBarVisible] = useState(false);
 
-    const value = { section, setSection, isBarOpen, setBarOpen, isBarVisible, setBarVisible };
+    const value = { isBarOpen, setBarOpen, isBarVisible, setBarVisible };
 
             return (
                 <NavbarContext.Provider value={value}>

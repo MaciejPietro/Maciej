@@ -7,9 +7,9 @@ div {
     width: 12px;
     border:  1px solid black;
     transition: all 0.9s;
-    cursor: pointer;
     position: absolute;
     right: 30px;
+    cursor: pointer;
     border-radius: 50%;
     transform: translate(100px);   
     animation: slideFromRight 3s forwards; 

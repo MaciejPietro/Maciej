@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useContext} from 'react'
 import {NavLink} from 'react-router-dom'
+import '../../animations/animations.css'
 import styled from 'styled-components'
 
 import { LanguageContext } from '../../contexts/LanguageContext'
@@ -12,16 +13,16 @@ import {TimelineMax} from 'gsap'
 
 const Wrapper = styled.div`
 position: absolute;
-right: 40%;
+right: 30%;
 top: 22vh;
     @media (max-width: 1367px) {
-        right: 30%;
-    }
-    @media (max-width: 1200px) {
         right: 24%;
     }
+    @media (max-width: 1200px) {
+        right: 16%;
+    }
     @media (max-width: 991px) {
-        right: 6%;
+        right: 0%;
     }
 `
 const List = styled.ul`
@@ -38,20 +39,22 @@ color: black;
 font-size: 3rem;
 letter-spacing: 0.2rem;
 list-style: none;
-margin: .7rem 0 0 0;
+line-height: 3.6rem;
 z-index:0;
+transform: rotateX(-90deg);
+transform-origin: bottom;
     &::before {
-        background-color: ${({pink, blue, yellow, darkcyan, green}) => {
+        background-color: ${({pink, blue, yellow, dark, creme}) => {
             if(pink) {
                 return "#FF5851"
             } else if(blue) {
-                return "#414A6B"
+                return "#72a0b8"
+            } else if(dark) {
+                return "#1C1B20"
             } else if(yellow) {
-                return "yellow"
-            } else if(darkcyan) {
-                return "darkcyan"
-            } else if(green) {
-                return "green"
+                return "#F3C130"
+            } else if(creme) {
+                return "#B49A85"
             } 
         }};
         opacity: .5;
@@ -60,7 +63,6 @@ z-index:0;
         font-size: 2rem;
         letter-spacing: 0.14rem;
         list-style: none;
-        margin: .4rem 0 0 0;
     }
 `
 const Contact = styled.div`
@@ -99,7 +101,13 @@ font-size: .8rem;
 
 
 function Menu({ changeSection }) {
-    let menu = useRef(null);
+    let contact = useRef(null);
+    let social = useRef(null);
+    let item = useRef(null);
+    let item2 = useRef(null);
+    let item3 = useRef(null);
+    let item4 = useRef(null);
+    let item5 = useRef(null);
     const { language } = useContext(LanguageContext);
     const { isBarOpen } = useContext(NavbarContext);
 
@@ -108,15 +116,27 @@ function Menu({ changeSection }) {
         const fadeIn = () => {
             const tl = new TimelineMax()
             if(isBarOpen) {
-                tl.delay(0.6)
-                .to(menu.current, 0.6, {opacity: "1", transform: "translateY(0)"})
+                tl.delay(0.6).to(contact.current, 0.3, {opacity: "1", transform: "translateY(0)"})
+                .to(social.current, 0.3, {opacity: "1", transform: "translateY(0)"});
             } else if(!isBarOpen) {
-                tl.to(menu.current, 0.3, {opacity: "0", transform: "translateY(200px)"})
+                tl.to(contact.current, 0.3, {opacity: "0", transform: "translateY(200px)"})
+                .to(social.current, 0.3, {opacity: "0", transform: "translateY(200px)"}, '-=0.3');
             }
         }
+
+        const cos = () => {
+            item.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .25s forwards" : "flip-out-menu 1s"
+            item2.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .40s forwards" : "flip-out-menu 1s"
+            item3.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .55s forwards" : "flip-out-menu 1s"
+            item4.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .70s forwards" : "flip-out-menu 1s"
+            item5.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .85s forwards" : "flip-out-menu 1s"
+
+        }
+            cos()
             fadeIn()
             return () => {
-                fadeIn() 
+                cos()
+                fadeIn()
             }
     }, [isBarOpen])
 
@@ -128,50 +148,48 @@ function Menu({ changeSection }) {
   }
     return (
         
-        <Wrapper ref={menu}>
+        <Wrapper>
             <List >
                 <StyledLink exact to='/'>
-                    <ListItem data-key="home" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} pink>
-                        {language === "PL" ? "Glowna" : "Home"}
+                    <ListItem isBarOpen={isBarOpen} ref={item} className="anima" delay={"0.5s"} data-key="home" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} pink>
+                        {language === "PL" ? "Glowna." : "Home."}
                     </ListItem>
                 </StyledLink>
 
                 <StyledLink to='/about'>
-                    <ListItem data-key="about" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} blue>
-                        {language === "PL" ? "O mnie" : "About"}
+                    <ListItem isBarOpen={isBarOpen} ref={item2} delay={"0.5s"} data-key="about" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection}  blue>
+                        {language === "PL" ? "O mnie." : "About."}
                     </ListItem>
                 </StyledLink>
 
                 <StyledLink to='/skills'>
-                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} yellow>
-                        {language === "PL" ? "Umiejetnosci" : "Skills"}
+                    <ListItem  isBarOpen={isBarOpen} ref={item3} delay={"0.5s"} data-key="skills" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection}  dark>
+                        {language === "PL" ? "Umiejetnosci." : "Skills."}
                     </ListItem>
                 </StyledLink>
 
                 <StyledLink to='/projects'>
-                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem}  darkcyan>
-                        {language === "PL" ? "Projekty" : "My Projects"}
+                    <ListItem isBarOpen={isBarOpen} ref={item4} delay={"0.5s"} data-key="projects"onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} yellow>
+                        {language === "PL" ? "Projekty." : "My Projects."}
                     </ListItem>
                 </StyledLink>
 
                 <StyledLink to='/contact'>
-                    <ListItem onMouseEnter={enterItem} onMouseLeave={leaveItem} green>
-                        {language === "PL" ? "Kontakt" : "Contact"}
+                    <ListItem isBarOpen={isBarOpen} ref={item5} delay={"0.5s"} onMouseEnter={enterItem} onMouseLeave={leaveItem} creme>
+                        {language === "PL" ? "Kontakt." : "Contact."}
                     </ListItem>
                 </StyledLink>
             </List> 
-            <Contact>
+            <Contact ref={contact}>
                 <Adress>Polska, Wyrzysk</Adress>
                 <ContactDetails>tel: 663417209</ContactDetails>
                 <ContactDetails>mail: mpietrolaj1@wp.pl</ContactDetails>
             </Contact>
-            <SocialMedia>
+            <SocialMedia ref={social}>
                 <FontAwesomeIcon icon={faGithub} color="gray" size="lg"/>
                 <FontAwesomeIcon icon={faFacebook} color="gray" size="lg"/>
-                <FontAwesomeIcon icon={faYoutube} color="gray" size="lg"/>
-         
-               
-            </SocialMedia>       
+                <FontAwesomeIcon icon={faYoutube} color="gray" size="lg"/>                       
+            </SocialMedia>      
         </Wrapper>
     )
 }

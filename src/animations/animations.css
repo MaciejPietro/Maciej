@@ -203,6 +203,29 @@
       width: 93%;
     }
   }
+  @keyframes flip-in-menu {
+    0% {
+      transform: rotateX(-90deg);
+
+    }
+    100% {
+      transform: rotateX(0);
+  
+    }
+  }
+
+  @keyframes flip-out-menu {
+    0% {
+      transform: rotateX(0);
+   
+    }
+    100% {
+      transform: rotateX(-90deg);
+      
+    }
+  }
+
+
 
   /* Scroll Icon */
 
@@ -219,5 +242,47 @@
     }
     0% {
       transform: translateY(0);
+    }
+  }
+
+
+  /* Introduction */
+  
+  @keyframes drawLine {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 16rem;
+    }
+  }
+
+  @keyframes drawLine2 {
+    0% {
+      height: 0;
+      top: 28rem;
+    }
+    100% {
+      height: 20rem;
+      top: 8rem;
+    }
+  }
+
+  @keyframes drawLine3 {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 23rem;
+    }
+  }
+  @keyframes drawLine4 {
+    0% {
+      width: 0;
+      left: 23rem;
+    }
+    100% {
+      width: 23rem;
+      left: 0;
     }
   }

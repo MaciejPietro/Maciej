@@ -3,9 +3,15 @@ import Letters from '../../components/Letters/Letters'
 import LettersMobile from '../../components/Letters/LettersMobile'
 import ScrollIcon from '../../components/ScrollIcon/ScrollIcon'
 import {TimelineMax, Bounce } from "gsap";
-import styled from 'styled-components'
+import styled, {createGlobalStyle}from 'styled-components'
 
+const Global = createGlobalStyle`
+body {
+      overflow-y: scroll;
+      overflow-x: hidden;
 
+  }
+`
 
 const RightBlock = styled.div`
 background-color: #F8F8F8;
@@ -76,12 +82,13 @@ const Home = (props) => {
 
         return (    
             <>  
-                {/* <LeftBlock ref={leftBlock} isBarOpen={isBarOpen} pathName={props.location.pathname} /> */}
+                    <Global />
                     <HeaderWrapper>    
                         {window.innerWidth < 576 ?  <LettersMobile /> : <Letters />}
                         {window.innerWidth < 676 ?  '' : <Dot ref={dot}/>}                   
                     </HeaderWrapper>  
-                    <RightBlock><ScrollIcon /></RightBlock>
+                    <RightBlock></RightBlock>
+                    <ScrollIcon top={"84vh"} left={"52vw"}/>
             </>  
         )
 }

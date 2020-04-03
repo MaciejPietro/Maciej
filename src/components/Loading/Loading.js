@@ -9,6 +9,7 @@ const Wrapper = styled.span`
     border: 4px solid #Fff;
     top: 46%;
     animation: loader 1.6s infinite ease, loaderFadeOut .6s forwards 1.6s;
+    z-index: 100;
 `
 
 const Fill = styled.span`

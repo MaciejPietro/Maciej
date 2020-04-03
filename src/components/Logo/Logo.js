@@ -7,10 +7,10 @@ font-weight: 500;
 font-size: 1.2rem;
 position: absolute;
 transition: .6s;
-top: ${({isBarOpen}) => isBarOpen ? "7.6rem" : "0.8rem" };
+top: ${({isBarOpen}) => isBarOpen ? "7.6vh" : "0.8vh" };
 left: ${({isBarOpen}) => isBarOpen ? "25vw" : "3.1rem" };
 color: black;
-z-index:6;
+z-index: 10;
 animation: slideFromTop 3s forwards;
 @media (max-width: 676px) {
     display:none;

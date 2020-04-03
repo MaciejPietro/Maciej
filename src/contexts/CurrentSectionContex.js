@@ -7,10 +7,10 @@
     const [section, setSection] = useState("home");
       const value = { section, setSection };
 
-      window.addEventListener('wheel', event => {
-        const delta = Math.sign(event.deltaY);
-        console.info(delta);
-      })
+      // window.addEventListener('wheel', event => {
+      //   const delta = Math.sign(event.deltaY);
+      //   console.info(delta);
+      // })
     
             return (
                 <CurrentSectionContext.Provider value={value}>

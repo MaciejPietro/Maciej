@@ -8,16 +8,15 @@ import { NavbarContext } from '../../contexts/NavbarContext'
 const Wrapper = styled.div`
 height: 100vh;
 width:  80vw;
-transition: .8s;
+transition-duration: .5s;
+transition-timing-function: cubic-bezier(.21,.39,.71,.48);
 transform: ${({isBarVisible, isBarOpen}) => {
     if(isBarOpen === true) {
         return "translate(-16vw)"    
     } else if(isBarOpen === false) {
-        return isBarVisible ? `translate(${window.innerWidth < 676 ? "-100vw" : "-84vw"})` : "translate(-100vw)"
+        return isBarVisible ? `translate(${window.innerWidth < 676 ? "-40vw" : "-72vw"})` : "translate(-80vw)"
     } 
 }};
-position: absolute;
-z-index: 5;
 background-color: white;
 display: flex;
 animation: sidebar 2s;
@@ -40,12 +39,12 @@ const Sidebar = ({ setPL, setENG, changeSection}) => {
     const { isBarVisible } = useContext(NavbarContext);
 
     return (
-        <Wrapper isBarVisible={isBarVisible} isBarOpen={isBarOpen}>
-            <MenuContainter>
-                <Language setPL={setPL}  setENG={setENG} currentLanguage={language}/>
-                <Menu changeSection={changeSection}/>
-            </MenuContainter>
-        </Wrapper>
+            <Wrapper isBarVisible={isBarVisible} isBarOpen={isBarOpen}>
+                <MenuContainter>
+                    <Language setPL={setPL}  setENG={setENG} currentLanguage={language}/>
+                    <Menu changeSection={changeSection}/>
+                </MenuContainter>
+            </Wrapper>
     )
 }
 

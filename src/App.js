@@ -1,11 +1,15 @@
 import React from 'react';
-import Base from './containers/Base/Base'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import {createGlobalStyle} from 'styled-components'
+import { CurrentSectionProvider } from './contexts/CurrentSectionContex'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { NavbarProvider } from './contexts/NavbarContext'
+import { MouseProvider } from './contexts/MouseContext'
 import './animations/animations.css'
-import {createGlobalStyle} from 'styled-components'
-import Rockout from './img/Rockout.ttf'
+import Base from './containers/Base/Base'
+import Rockout from './fonts/Rockout.ttf'
+import Tamira from './fonts/Tamira.otf'
 
 const Global = createGlobalStyle`
 @font-face {
@@ -14,15 +18,24 @@ const Global = createGlobalStyle`
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Tamira';
+  src: url(${Tamira}) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
-  
+  overflow: hidden;
   margin: 0;
   font-family: 'Rockout', cursive;
+  @media (max-width: 991px) {
+    overflow: scroll;
+  }
 }
 `
 
 
-const App = () => {
+const App = (props) => {
 
 
   // let cos = 0;
@@ -49,14 +62,18 @@ const App = () => {
 
 
   return (
-    <LanguageProvider>
-      <NavbarProvider>
-        <Global />
-        <Router>
-          <Route path='/' component={Base}/>
-        </Router>
-      </NavbarProvider>
-    </LanguageProvider>
+    <MouseProvider>
+      <LanguageProvider>
+        <NavbarProvider>
+          <CurrentSectionProvider>
+            <Global />
+            <Router>
+              <Route path='/' component={Base}/>
+            </Router>
+          </CurrentSectionProvider>
+        </NavbarProvider>
+      </LanguageProvider>
+    </MouseProvider>
   );
 
 }

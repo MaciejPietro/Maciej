@@ -8,17 +8,18 @@ const Wrapper = styled.span`
 width: 3rem;
 height: 5rem;
 display: flex;
+top: ${({top}) => top};
+left: ${({left}) => left};
 flex-direction: column;
 padding: 2rem 1rem;
 position: absolute;
-left: 52vw;
-bottom: 0;
 animation: slideFromBottom 3s forwards;
+z-index: 4;
 `
 const Text = styled.p`
-color:black;
+color: ${({color}) => color};
 font-size: .8rem;
-letter-spacing: 1px;
+letter-spacing: 1.3px;
 transform: rotate(-90deg);
 transform-origin: left;
 margin: 0.4rem 0 0 0.24rem;
@@ -27,12 +28,12 @@ margin: 0.4rem 0 0 0.24rem;
 }
 `
 
-function ScrollIcon() {
+function ScrollIcon({top, left, color}) {
     const { language } = useContext(LanguageContext);
     return (
-        <Wrapper>
-            <Text>{language === "PL" ? "Przewin" : "Scroll"}</Text>
-            <FontAwesomeIcon className="scroll-icon" icon={faLongArrowAltDown} size="sm" color="black"/>
+        <Wrapper top={top} left={left}>
+            <Text color={color}>{language === "PL" ? "Przewin" : "Scroll"}</Text>
+            <FontAwesomeIcon className="scroll-icon" icon={faLongArrowAltDown} size="sm" color={color}/>
         </Wrapper>
     )
 }
