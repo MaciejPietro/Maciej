@@ -7,7 +7,7 @@ width: 70vw;
 height: 50vh;
 
 position : absolute;
-z-index: 5;
+z-index: 1;
 margin: 4vh 0 0 0;
 display: flex;
 flex-direction: row;
@@ -18,7 +18,10 @@ width: 50%;
 font-size : 8rem;
 line-height: 7rem;
 margin-top: 8vh;
-
+z-index: 1;
+opacity: 0;
+transform: translateY(10rem);
+animation: fadeIn .7s forwards 2.4s;
 `
 
 const Text = styled.div`
@@ -32,6 +35,9 @@ line-height: 2.2rem;
 margin-top: 20vh;
 letter-spacing: 1.6px;
 padding: 3vw 10vw 5vw 5vw;
+opacity: 0;
+transform: translateY(10rem);
+animation: fadeIn .7s forwards 2.8s;
 h4 {
     b {
         font-weight: 600;
@@ -61,6 +67,7 @@ function ProjectsHeader() {
                 My <DiamondWrapper><Diamond /></DiamondWrapper><br />
                 Projects.
             </Heading>
+
             <Text>
                 <h4>
                     <b>Lista ostatnich</b><br />

@@ -3,10 +3,10 @@ import { TimelineMax} from "gsap";
 import { NavbarContext } from '../../contexts/NavbarContext'
 import Introduce from '../../components/Introduce/Introduce'
 import Pictures from '../../components/Pictures/Pictures'
+import Loading from '../../components/Loading/Loading'
 import styled from 'styled-components'
 
 const Wrapper = styled.section`
-z-index:1;
 position: absolute;
 padding: 3vw;
 display: flex;
@@ -41,6 +41,7 @@ const About = () => {
         return (  
        
             <Wrapper>
+                    <Loading />
                     <Introduce reference={intro}/>   
                     <Pictures reference={pic}/>           
             </Wrapper>

@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import Letters from '../../components/Letters/Letters'
 import LettersMobile from '../../components/Letters/LettersMobile'
 import ScrollIcon from '../../components/ScrollIcon/ScrollIcon'
+import Loading from '../../components/Loading/Loading'
 import {TimelineMax, Bounce } from "gsap";
 import styled, {createGlobalStyle}from 'styled-components'
 
@@ -13,22 +14,6 @@ body {
   }
 `
 
-const RightBlock = styled.div`
-background-color: #F8F8F8;
-display: ${({pathName}) => pathName === "/" ? "block" : "none"};
-color: #fff;
-margin: 3vw 3vw 3vw 0;
-display: flex;
-flex-grow: 1;
-align-items: center;
-justify-content: center;    
-width: 46vw;
- @media (max-width: 676px) {
-    div:first-child {
-        display: none;
-    }
- }
-`
 
 const HeaderWrapper = styled.div`
 position: absolute;
@@ -36,7 +21,7 @@ display: flex;
 flex-flow: row wrap;
 top: 28%;
 left: 38%;
-z-index: 4;
+z-index: 1;
  @media (max-width: 991px) {
     left: 28%;
  }
@@ -83,11 +68,11 @@ const Home = (props) => {
         return (    
             <>  
                     <Global />
+                    <Loading />
                     <HeaderWrapper>    
                         {window.innerWidth < 576 ?  <LettersMobile /> : <Letters />}
                         {window.innerWidth < 676 ?  '' : <Dot ref={dot}/>}                   
                     </HeaderWrapper>  
-                    <RightBlock></RightBlock>
                     <ScrollIcon top={"84vh"} left={"52vw"}/>
             </>  
         )

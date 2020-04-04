@@ -15,6 +15,7 @@ padding: 2rem 1rem;
 position: absolute;
 animation: slideFromBottom 3s forwards;
 z-index: 4;
+opacity: ${window.scrollY > 100 ? "0" : "1"};
 `
 const Text = styled.p`
 color: ${({color}) => color};
@@ -30,6 +31,7 @@ margin: 0.4rem 0 0 0.24rem;
 
 function ScrollIcon({top, left, color}) {
     const { language } = useContext(LanguageContext);
+
     return (
         <Wrapper top={top} left={left}>
             <Text color={color}>{language === "PL" ? "Przewin" : "Scroll"}</Text>

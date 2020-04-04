@@ -1,30 +1,20 @@
-import React, { useEffect } from 'react'
-import  {createGlobalStyle} from 'styled-components'
+import React, {useEffect} from 'react'
 import ProjectsHeader from '../../components/ProjectsHeader/ProjectsHeader'
 import Projects from '../../components/Projects/Projects'
+import Loading from '../../components/Loading/Loading'
 
 
 
-
-const Global = createGlobalStyle`
-body {
-      overflow-y: scroll;
-      overflow-x: hidden;
-  }
-`
 
 function Skills() {
 
-let count;
 
-    useEffect(()=> {
-  window.addEventListener('mousewheel', props => {
-         console.log("wheel")
-        })
-    })
+useEffect(() => {
+    window.scrollTo(0, 0)
+}, [])
     return (
         <>
-            <Global/>
+            <Loading />
             <ProjectsHeader />
             <Projects />
         </>

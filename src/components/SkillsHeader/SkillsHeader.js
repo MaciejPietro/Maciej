@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import skillsLaptop from '../../img/skillsLaptop.jpg'
 import ScrollIcon from '../ScrollIcon/ScrollIcon'
@@ -7,9 +7,9 @@ const Wrapper = styled.div`
 position: absolute;
 height: 200vh;
 padding: 0 6vw 0 0;
-z-index: 9;
+z-index: 1;
 `
-const Header = styled.div`
+const My = styled.div`
 position: absolute;
 width: 40rem;
 top: ${window.innerWidth < 676 ? "21.6vh" : "41.6vh"};
@@ -17,15 +17,29 @@ left: -30vw;
 font-size: 11rem;
 font-family: 'Rockout';
 margin: 0;
-line-height: 5.6rem;
-color: white;
- &:first-line {
-     color: #1C1B20;
-     font-size: 10rem;
- }
-@media (max-width: 676px) {
-
+line-height: 5.7rem;
+color: #1C1B20;
+transform: rotateX(-90deg);
+opacity: 0;
+animation: skillsMyShowUp .8s forwards 2.6s;
 }
+`
+
+const Skills = styled.div`
+position: absolute;
+width: 40rem;
+top: ${window.innerWidth < 676 ? "30.6vh" : "50.6vh"};
+left: -30vw;
+font-size: 10rem;
+font-family: 'Rockout';
+margin: 0;
+line-height: 5.7rem;
+color: white;
+transform: translateY(-5vh) rotateX(-90deg);
+transform-origin: top;
+opacity: 0;
+animation: skillsSkillsShowUp .8s forwards 2.2s;
+z-index: 0;
 }
 `
 
@@ -35,10 +49,30 @@ top: 50vh;
 left: 0;
 margin-left: 7vw;
 width: 41vw;
-height: 50vh;
+height: 42vh;
 background-image: url(${({img}) => img});
-background-size: cover;
+background-size: 240%;
+background-position: center;
+opacity: 0;
+animation: skillsScaleImage 2s forwards 1.2s;
 overflow: hidden;
+z-index: -1;
+    &:before {
+        content: '';
+        width: 41vw;
+        height: 51vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 0vh;
+        background-color: #1C1B20;
+        animation: skillsImage 1s forwards 2.22s;
+    }
+@media (max-width: 991px) {
+    animation: none;
+    background-size: cover;
+    opacity: 1;
+}
 @media (max-width: 676px) {
     display: none;
 }
@@ -62,28 +96,20 @@ color: white;
     width: 90vw;
     padding: 1vw 5vw;
 }
-
 `
 
 
+function SkillsHeader({txtWrapper}) {
 
-function SkillsHeader() {
+
+
     return (
         <Wrapper>
             <ScrollIcon top={"86vh"} left={"-40vw"} color={"white"}/>
-            <Header>MY <br/>SKILLS</Header>
+            <My>MY </My><br/>
+            <Skills>Skills </Skills>
             <Image img={skillsLaptop}/>
-            <Text>
-                Lady, running down to the riptide
-                Taken away to the dark side
-                I wanna be your left hand man
-                I love you when you're singing that song and
-                I got a lump in my throat 'cause
-                You're gonna sing the words wrong
-                Is this movie that I think you'll like
-                This guy decides to quit his job and heads to New York City
-                This cowboy's running from himself
-                And she's been living on the highest shelf
+            <Text id="text" ref={txtWrapper}>
             </Text>
        
         </Wrapper>

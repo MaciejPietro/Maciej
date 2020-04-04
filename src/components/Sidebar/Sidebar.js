@@ -8,8 +8,9 @@ import { NavbarContext } from '../../contexts/NavbarContext'
 const Wrapper = styled.div`
 height: 100vh;
 width:  80vw;
-transition-duration: .5s;
-transition-timing-function: cubic-bezier(.21,.39,.71,.48);
+z-index: 1;
+transition-duration: .3s;
+transition-timing-function: cubic-bezier(.17,.30,.60,.38);
 transform: ${({isBarVisible, isBarOpen}) => {
     if(isBarOpen === true) {
         return "translate(-16vw)"    

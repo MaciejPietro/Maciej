@@ -1,30 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Html, Css, Sass, Bootstrap, Git, JavaScript, ReactIcon, Npm, Xd, Illustrator, Hooks, Node, StyledComponents} from '../../contexts/LanguageIcons'
+import { Html, Git, JavaScript, ReactIcon, Xd, Hooks, Node, StyledComponents} from '../../contexts/LanguageIcons'
 
 const Wrapper = styled.div`
-background-color:white;
+background-color:#1C1B20;
 width: 90vw;
-height: 20rem;
 position: absolute;
 display: flex;
 flex-direction: row;
 left: 5vw;
 top: 100vh;
+z-index: 1;
 `
 
 const Box = styled.div`
 width: 70vw;
-height: 50rem;
 background-color: transparent;
 left: 0;
 margin:10vh 10vw 0;
-z-index: 100;
 `
 const Row = styled.div`
 height: 6rem;
 width: 36vw;
-margin-left: ${({toRight}) => toRight ? "35vw" : "0"};
+margin-left: ${({right}) => right ? "35vw" : "0"};
 display: flex;
 flex-direction: column;
 font-family: 'Barlow Condensed', sans-serif;
@@ -54,7 +52,7 @@ h5 {
         opacity: 1;
     }
     h5{  
-        margin: ${({toRight}) => toRight ? "0.5rem 20% 0 0" : "0.5rem 0 0 16%"};
+        margin: ${({right}) => right ? "0.5rem 20% 0 0" : "0.5rem 0 0 16%"};
 
     }
 }
@@ -63,18 +61,18 @@ h5{
 }
 @media (max-width: 991px) {
     width: 54vw;
-    margin-left: ${({toRight}) => toRight ? "17vw" : "0"};
+    margin-left: ${({right}) => right ? "17vw" : "0"};
 }
 @media (max-width: 676px) {
     width: 72vw;
-    margin-left: ${({toRight}) => toRight ? "0" : "0"};
+    margin-left: ${({right}) => right ? "0" : "0"};
 }
 `
 const IconWrapper = styled.div`
 width: 4.4rem;
 height: 4.4rem;
 position: absolute;
-${({toRight}) => toRight ? "right: 12%" : "left: 10%"};
+${({right}) => right ? "right: 12%" : "left: 10%"};
 margin: 0.5rem 0 0 1.4vw;
 opacity: 0;
 transition: .3s;
@@ -82,7 +80,7 @@ transition-timing-function: cubic-bezier(.12,.33,.62,.65);
 `
 const Line = styled.span`
 height: 4px;
-background: ${({toRight}) => !toRight ? "linear-gradient(90deg, rgba(28,27,32,1) 0%, rgba(255,255,255,1) 100%)" : "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(28,27,32,1) 100%)"};
+background: ${({right}) => !right ? "linear-gradient(90deg, rgba(28,27,32,1) 0%, rgba(255,255,255,1) 100%)" : "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(28,27,32,1) 100%)"};
 width: 35vw;
  &:after {
      transition: .7s;
@@ -92,14 +90,14 @@ width: 35vw;
      width: 35.5vw;
      height: 0px;
      margin-top: 0rem;
-     margin-left: ${({toRight}) => toRight ? "-34.5vw" : "0"};
+     margin-left: ${({right}) => right ? "-34.5vw" : "0"};
      z-index: -1;
  }
  &:before {
     content: '';
     position: absolute;
     background-color: white;
-    margin-left: ${({toRight}) => toRight ? "-35.3vw" : "34.6vw"};
+    margin-left: ${({right}) => right ? "-35.3vw" : "34.6vw"};
     width: 1.8rem;
     height: 1.8rem;
     border-radius:50%;
@@ -114,20 +112,20 @@ width: 35vw;
         width: 54vw;
         &:after  {
             width: 70vw;
-            margin-left: ${({toRight}) => toRight ? "-53vw" : "0"};
+            margin-left: ${({right}) => right ? "-53vw" : "0"};
         }
         &:before {
-            margin-left: ${({toRight}) => toRight ? "-54.4vw" : "51.7vw"};
+            margin-left: ${({right}) => right ? "-54.4vw" : "51.7vw"};
         }
 }
 @media (max-width: 676px) {
     width: 70vw;
     &:after  {
         width: 70vw;
-        margin-left: ${({toRight}) => toRight ? "-70vw" : "0"};
+        margin-left: ${({right}) => right ? "-70vw" : "0"};
     }
     &:before {
-        margin-left: ${({toRight}) => toRight ? "-72vw" : "67.6vw"};
+        margin-left: ${({right}) => right ? "-72vw" : "67.6vw"};
     }
 }
 `
@@ -146,12 +144,12 @@ function ProgrammingLanguages() {
                     <Line className="mt-2 bg-dark"/>
                 </Row>
 
-                            <Row toRight className="text-right">
-                                <h5 toRight>main framework<br /> <strong>React</strong></h5>
-                                <IconWrapper toRight>
+                            <Row right="true" className="text-right">
+                                <h5 right="true">main framework<br /> <strong>React</strong></h5>
+                                <IconWrapper right="true">
                                     <ReactIcon /> 
                                 </IconWrapper>
-                                <Line toRight className="mt-2 ml-auto bg-dark"/>
+                                <Line right="true" className="mt-2 ml-auto bg-dark"/>
                             </Row>
 
                 <Row>
@@ -162,15 +160,15 @@ function ProgrammingLanguages() {
                     <Line className="mt-2 bg-dark"/>
                 </Row>
 
-                            <Row toRight className="text-right">
-                                <h5 toRight>styles in
+                            <Row right="true" className="text-right">
+                                <h5 right="true">styles in
                                     {window.innerWidth < 676 ? "" : <br />} 
                                     <strong>Styled Components</strong>
                                 </h5>
-                                <IconWrapper toRight>
+                                <IconWrapper right="true">
                                     <StyledComponents /> 
                                 </IconWrapper>
-                                <Line toRight className="mt-2 ml-auto bg-dark"/>
+                                <Line right="true" className="mt-2 ml-auto bg-dark"/>
                             </Row>
 
                 <Row>
@@ -182,12 +180,12 @@ function ProgrammingLanguages() {
                 </Row>
                 
 
-                            <Row toRight className="text-right">
-                                <h5 toRight>semantic<br /> <strong>HTML &amp; JSX</strong></h5>
-                                <IconWrapper toRight>
+                            <Row right="true" className="text-right">
+                                <h5 right="true">semantic<br /> <strong>HTML &amp; JSX</strong></h5>
+                                <IconWrapper right="true">
                                     <Html /> 
                                 </IconWrapper>
-                                <Line toRight className="mt-2 ml-auto bg-dark"/>
+                                <Line right="true" className="mt-2 ml-auto bg-dark"/>
                             </Row>
 
                 <Row>
@@ -198,12 +196,12 @@ function ProgrammingLanguages() {
                     <Line className="mt-2 bg-dark"/>
                 </Row>
 
-                            <Row toRight className="text-right">
-                                <h5 toRight>layouts &amp; images<br /> <strong>XD &amp; Illustrator</strong></h5>
-                                <IconWrapper toRight>
+                            <Row right="true" className="text-right">
+                                <h5 right="true">layouts &amp; images<br /> <strong>XD &amp; Illustrator</strong></h5>
+                                <IconWrapper right="true">
                                     <Xd /> 
                                 </IconWrapper>
-                                <Line toRight className="mt-2 ml-auto bg-dark"/>
+                                <Line right="true" className="mt-2 ml-auto bg-dark"/>
                             </Row>
 
                 <Row>
