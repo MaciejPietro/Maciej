@@ -160,10 +160,10 @@ const Base = (props) => {
 
                         <Block ref={block} section={section} className={isBarOpen ? "fixed-top" : ""}/>
                             <Switch>    
-                                <Route path='/Maciej-Portfolio'  component={Home} exact/>
-                                <Route path='/about'  component={About}/>
-                                <Route  path='/skills'  component={Skills}/>
-                                <Route  path='/projects'  component={Projects}/>
+                                <Route path='/Maciej'  component={Home} exact/>
+                                <Route path='/Maciej/about'  component={About}/>
+                                <Route  path='/Maciej/skills'  component={Skills}/>
+                                <Route  path='/Maciej/projects'  component={Projects}/>
                             </Switch> 
                         <Language setPL={setPL}  setENG={setENG} currentLanguage={language}/>
                         <LineNavWrapper className="fixed-top">

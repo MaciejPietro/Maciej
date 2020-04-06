@@ -154,31 +154,31 @@ function Menu({ changeSection }) {
         
         <Wrapper>
             <List >
-                <StyledLink exact to='/'>
+                <StyledLink exact to='/Maciej'>
                     <ListItem isBarOpen={isBarOpen} ref={item}  delay={"0.5s"} data-key="home" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} pink>
                         {language === "PL" ? "Glowna." : "Home."}
                     </ListItem>
                 </StyledLink>
 
-                <StyledLink to='/about'>
+                <StyledLink to='/Maciej/about'>
                     <ListItem isBarOpen={isBarOpen} ref={item2} delay={"0.5s"} data-key="about" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection}  blue>
                         {language === "PL" ? "O mnie." : "About."}
                     </ListItem>
                 </StyledLink>
 
-                <StyledLink to='/skills'>
+                <StyledLink to='/Maciej/skills'>
                     <ListItem  isBarOpen={isBarOpen} ref={item3} delay={"0.5s"} data-key="skills" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection}  dark>
                         {language === "PL" ? "Umiejetnosci." : "Skills."}
                     </ListItem>
                 </StyledLink>
 
-                <StyledLink to='/projects'>
+                <StyledLink to='/Maciej/projects'>
                     <ListItem isBarOpen={isBarOpen} ref={item4} delay={"0.5s"} data-key="projects"onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} yellow>
                         {language === "PL" ? "Projekty." : "My Projects."}
                     </ListItem>
                 </StyledLink>
 
-                <StyledLink to='/contact'>
+                <StyledLink to='/Maciej/contact'>
                     <ListItem isBarOpen={isBarOpen} ref={item5} delay={"0.5s"} onMouseEnter={enterItem} onMouseLeave={leaveItem} creme>
                         {language === "PL" ? "Kontakt." : "Contact."}
                     </ListItem>

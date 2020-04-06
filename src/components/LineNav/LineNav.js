@@ -184,30 +184,30 @@ const LineNav = ({changeSection}) => {
     return (
         <Wrapper> 
 
-            <StyledLink exact to='/' >
+            <StyledLink exact to='/Maciej' >
                 <HomeCircle data-key="home" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
                     <Span data-key="home"/>
                 </HomeCircle>
             </StyledLink>
 
-            <StyledLink to='/about'>
+            <StyledLink to='/Maciej/about'>
                 <About data-key="about" className="hoverAble" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")}>
                     <Span data-key="about"/>
                 </About>
             </StyledLink>
 
-            <StyledLink to='/skills'>
+            <StyledLink to='/Maciej/skills'>
                 <Skills data-key="skills" className="hoverAble" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
                 <Span data-key="skills"/></Skills>
             </StyledLink>
 
-            <StyledLink to='/projects'>
+            <StyledLink to='/Maciej/projects'>
                 <Projects data-key="projects" className="hoverAble" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
                     <Span data-key="projects"/>
                 </Projects>
             </StyledLink>
 
-            <StyledLink to='/contact'>
+            <StyledLink to='/Maciej/contact'>
                 <Contact data-key="contact" className="hoverAble" onClick={changeSection} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
                     <Span data-key="contact"/>
                 </Contact>
