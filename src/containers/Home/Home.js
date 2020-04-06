@@ -26,8 +26,12 @@ z-index: 1;
     left: 28%;
  }
  @media (max-width: 567px) {
-    left: 24%;
+    left: 20%;
  }
+ @media (max-width: 476px) {
+    top: 32%;
+ }
+
 `
 const Dot = styled.span`
 display: block;
@@ -41,11 +45,19 @@ left: 380px;
 `
 
 const Home = (props) => {
+    document.querySelector('body').style.overflowY = "scroll"
+    document.querySelector('body').style.overflowX = "hidden"
     let dot = useRef(null);
+    let ignore = useRef(false)
+
+
+
     useEffect(() => { 
+
+        if(ignore.current) return;
         const dotEntrance = () => {
             const tl = new TimelineMax();
-            if(dot.current) {
+            if(dot.current && !ignore.current) {
                 tl.delay(3).fromTo(
                     dot.current, 
                     1, 
@@ -54,13 +66,11 @@ const Home = (props) => {
                     transformOrigin: "top"});
             }
         }
+
         dotEntrance();
+        return () => ignore.current = true
 
-        return () => {
-            dotEntrance();
-        }
     }, [])
-
 
    
 
@@ -70,10 +80,9 @@ const Home = (props) => {
                     <Global />
                     <Loading />
                     <HeaderWrapper>    
-                        {window.innerWidth < 576 ?  <LettersMobile /> : <Letters />}
-                        {window.innerWidth < 676 ?  '' : <Dot ref={dot}/>}                   
+                        {window.innerWidth < 476 || window.innerHeight < 476 ?  <LettersMobile /> : <Letters />}
+                        {window.innerWidth < 576 || window.innerHeight < 576 ?  '' : <Dot ref={dot}/>}                   
                     </HeaderWrapper>  
-                    <ScrollIcon top={"84vh"} left={"52vw"}/>
             </>  
         )
 }

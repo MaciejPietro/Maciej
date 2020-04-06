@@ -1,62 +1,218 @@
-import React from 'react'
+import React, { useContext, useRef } from 'react'
 import styled from 'styled-components'
+import {NavLink} from 'react-router-dom'
+import { CurrentSectionContext } from '../../contexts/CurrentSectionContex'
+import { CursorContext } from '../../contexts/CursorContext'
+
+
 
 const Wrapper = styled.div`
+    position: absolute;
+    top: 42vh;
+    right: 30px;
+    overflow:auto;
 div {
     background-color: transparent;
-    width: 12px;
-    border:  1px solid black;
-    transition: all 0.9s;
-    position: absolute;
-    right: 30px;
-    cursor: pointer;
-    border-radius: 50%;
+    width: 20px;
+    height: 25px;
+    transition: all 0.6s;
+    display: flex;
+    flex-direction: column;
+    cursor: none;
     transform: translate(100px);   
-    animation: slideFromRight 3s forwards; 
-}
-.active {
-    &::before {
+    animation: slideFromRight 3s forwards;
+    &:before {
         content: '';
-        width: 11px;
-        border:  1px solid black;
+        position: absolute;
+        margin-top: 12px;
+        width: 16px;
+        height: 2px;
+        background-color: black;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 2px;
+        margin: 12px 6px 0 0;
         background-color: black;
         transform: rotate(90deg);
-        position: absolute;
-        margin-left: -1px;
-        border-radius: 50%;
+        transition: 0.6s;
+        opacity: 0;
     }
 }
+
+
 @media (max-width: 676px) {
     display: none;
 }
 `
 const HomeCircle = styled.div`
-top: 44vh;
+&:hover {
+    span {
+        &:before, &:after {
+            opacity: 1;
+        }
+    }
+}
+span {
+    &:before, &:after {
+      display: ${({section}) => section === "home" ? "none" : "block"};
+    }
+}
+&:after {
+    opacity: ${({section}) => section === "home" ? "1!important" : "0"};
+}
+
 `
 
 const About = styled.div`
-top: 47vh;
+&:hover {
+    span {
+        &:before, &:after {
+            opacity: 1;
+        }
+    }
+}
+span {
+    &:before, &:after {
+      display: ${({section}) => section === "about" ? "none" : "block"};
+    }
+}
+&:after {
+    opacity: ${({section}) => section === "about" ? "1!important" : "0"};
+}
 `
 
 const Skills = styled.div`
-top: 50vh;
+&:hover {
+    span {
+        &:before, &:after {
+            opacity: 1;
+        }
+    }
+}
+span {
+    &:before, &:after {
+      display: ${({section}) => section === "skills" ? "none" : "block"};
+    }
+}
+&:after {
+    opacity: ${({section}) => section === "skills" ? "1!important" : "0"};
+}
 `
 const Projects = styled.div`
-top: 53vh;
+&:hover {
+    span {
+        &:before, &:after {
+            opacity: 1;
+        }
+    }
+}
+span {
+    &:before, &:after {
+      display: ${({section}) => section === "projects" ? "none" : "block"};
+    }
+}
+&:after {
+    opacity: ${({section}) => section === "projects" ? "1!important" : "0"};
+}
 `
 const Contact = styled.div`
-top: 56vh;
+&:hover {
+    span {
+        &:before, &:after {
+            opacity: 1;
+        }
+    }
+}
+span {
+    &:before, &:after {
+      display: ${({section}) => section === "contact" ? "none" : "block"};
+    }
+}
+&:after {
+    opacity: ${({section}) => section === "contact" ? "1!important" : "0"};
+}
+`
+
+const StyledLink = styled(NavLink)`
+    text-decoration: none;
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }   
+`;
+
+const Span = styled.span`
+&:before {
+    content: '';
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 9px;
+    width: 6px;
+    height: 2px;
+    background-color: black;
+    transform: rotate(45deg);
+    transition: 0.6s;
+    opacity: 0;
+}
+&:after {
+    content: '';
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 15px;
+    width: 6px;
+    height: 2px;
+    background-color: black;
+    transform: rotate(-45deg);
+    transition: 0.6s;
+    opacity: 0;
+}
+&:hover {
+        &:before {
+            opacity: 1;
+        }
+}
 `
 
 
-const LineNav = () => {
+const LineNav = ({changeSection}) => {
+    const { section } = useContext(CurrentSectionContext); 
+    const {  setCursor } = useContext(CursorContext); 
+    
+
     return (
-        <Wrapper>
-            <HomeCircle className="active"/>
-            <About />
-            <Skills />
-            <Projects />
-            <Contact />
+        <Wrapper> 
+
+            <StyledLink exact to='/' >
+                <HomeCircle data-key="home" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
+                    <Span data-key="home"/>
+                </HomeCircle>
+            </StyledLink>
+
+            <StyledLink to='/about'>
+                <About data-key="about" className="hoverAble" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")}>
+                    <Span data-key="about"/>
+                </About>
+            </StyledLink>
+
+            <StyledLink to='/skills'>
+                <Skills data-key="skills" className="hoverAble" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
+                <Span data-key="skills"/></Skills>
+            </StyledLink>
+
+            <StyledLink to='/projects'>
+                <Projects data-key="projects" className="hoverAble" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
+                    <Span data-key="projects"/>
+                </Projects>
+            </StyledLink>
+
+            <StyledLink to='/contact'>
+                <Contact data-key="contact" className="hoverAble" onClick={changeSection} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
+                    <Span data-key="contact"/>
+                </Contact>
+            </StyledLink>
+
         </Wrapper>
     )
 }

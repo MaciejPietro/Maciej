@@ -5,12 +5,15 @@ import {Diamond} from '../../contexts/LanguageIcons'
 const Wrapper = styled.div`
 width: 70vw;
 height: 50vh;
-
 position : absolute;
 z-index: 1;
 margin: 4vh 0 0 0;
 display: flex;
 flex-direction: row;
+@media (max-width: 676px) {
+    width: 100vw;
+    padding: 0 10vw;
+}
 `
 const Heading = styled.div`
 color: white;
@@ -19,9 +22,25 @@ font-size : 8rem;
 line-height: 7rem;
 margin-top: 8vh;
 z-index: 1;
-opacity: 0;
 transform: translateY(10rem);
 animation: fadeIn .7s forwards 2.4s;
+transition: .6s;
+opacity: ${({isBarOpen}) => isBarOpen ? "0" : "0"};
+@media (max-width: 1200px) {
+    font-size: 6rem;
+    line-height: 5rem;
+    margin-top: 20vh;
+}
+@media (max-width: 991px) {
+    margin-top: 26vh;
+}
+@media (max-width: 676px) {
+    margin-top: 20vh;
+}
+@media (max-width: 476px) {
+    margin-top: 24vh;
+    font-size: 4rem;
+}
 `
 
 const Text = styled.div`
@@ -34,7 +53,7 @@ color: whitesmoke;
 line-height: 2.2rem;
 margin-top: 20vh;
 letter-spacing: 1.6px;
-padding: 3vw 10vw 5vw 5vw;
+padding: 3vw 0vw 5vw 12vw;
 opacity: 0;
 transform: translateY(10rem);
 animation: fadeIn .7s forwards 2.8s;
@@ -48,6 +67,17 @@ h4 {
 p {
     letter-spacing: 2px;
 }
+@media (max-width: 991px) {
+    padding: 0;
+    margin-top: 16vh;
+}
+@media (max-width: 676px) {
+    margin-top: 10vh;
+    padding: 0;
+    width: 60vw;
+    text-align: justify;
+    line-height: 1.6rem;
+}
 `
 
 const DiamondWrapper = styled.span`
@@ -58,6 +88,18 @@ top: 14vh;
 width: 30rem;
 height: 12rem;
 transform: rotate(40deg);
+@media (max-width: 991px) {
+    top: 0vh;
+    left: 0%;
+}
+@media (max-width: 676px) {
+    top: 0vh;
+    left: -10vw;
+}
+@media (max-width: 476px) {
+    top: 0vh;
+    left: -18vw;
+}
 `
 
 function ProjectsHeader() {

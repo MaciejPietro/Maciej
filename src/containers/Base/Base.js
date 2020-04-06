@@ -3,8 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 import { LanguageContext } from '../../contexts/LanguageContext'
 import { NavbarContext } from '../../contexts/NavbarContext'
 import { CurrentSectionContext } from '../../contexts/CurrentSectionContex'
+import { CursorContext } from '../../contexts/CursorContext'
 import { TimelineMax} from "gsap";
 import styled from 'styled-components'
+
+
 
 import LineNav from '../../components/LineNav/LineNav'
 import Language from '../../components/Language/Language'
@@ -20,6 +23,8 @@ import Projects from '../Projects/Projects'
 const SidebarWrapper = styled.div`
 z-index: 2;
 width: 0;
+position: fixed!important;
+top: 0;
 `
 
 const LineNavWrapper = styled.div`
@@ -58,105 +63,72 @@ color: #fff;
 margin: 0;
 flex-shrink: 0;
 z-index: 1;
+transition: .6s;
+
 `
 
 
 const Base = (props) => {
+    document.querySelector('body').style.overflowX = "hidden"
     let block = useRef(null);
+    const { setCursor } = useContext(CursorContext);
     const { language, setLanguage } = useContext(LanguageContext);
     const { isBarOpen, setBarOpen } = useContext(NavbarContext);
     const { section, setSection } = useContext(CurrentSectionContext);
     const {  setBarVisible } = useContext(NavbarContext);
     const tl = new TimelineMax()
-    const ifMobile = window.innerWidth < 767
+    const ifMobile = window.innerWidth < 676;
     let margin = ifMobile ? "0" : "3vw 5vw 3vw 5vw";
  
 
     // Initial section-block values
-    const home = {width: "44vw", margin: ifMobile ? "0" : "3vw 50vw 3vw 5vw"};
+    const home = {width: ifMobile ? "50vw" : "44vw", height: ifMobile ? "100vh" : "90vh", margin: ifMobile ? "0 50vw 0 0" : "3vw 50vw 3vw 5vw"};
     const about = {width: "0vw", marginRight: "95vw"};
-    const skills = {width: "90vw",   margin: `${window.innerWidth < 676 ? "0" : "50vh 3vw 0vw 3vw"}` , height: "50vh"};
-    const projects = {width: "90vw", height: "50vh", margin: `${margin}`};
+    const skills = {width: ifMobile ? "100vw":  "90vw",   margin: ifMobile ? "30vh 0 0 0" : "50vh 5vw 3vw 5vw" , height: ifMobile ? "70vh":  "50vh"};
+    const projects = {width: ifMobile ? "100vw" : "90vw", height: "50vh", margin: `${margin}`};
+    let ignore = useRef(false)
+
+
 
     useEffect(() => { 
-        // window.addEventListener('mousewheel', props => {
-        //     history.push("/about");
-        // })
         const animateHomeBlock = () => {  
-            const tlInit = new TimelineMax() 
-            tlInit.delay(1.5)
-                .fromTo(block.current, 0.6, {width: "110vw", margin: 0}, {width: "44vw", margin: ifMobile < 767 ?  "3vw 50vw 3vw 5vw":  "0 50vw 0 0"});
+            tl.fromTo(block.current, 2, {width: "110vw", margin: 0}, {width: "44vw", margin: ifMobile ? "0 50vw 0 0":  "3vw 50vw 3vw 5vw"});
         }
+
+
             animateHomeBlock();
-            return () => {
-                animateHomeBlock();
-            }
-    }, [ifMobile])
+            return () => ignore.current = true 
+            
+    }, [])
 
 
-        const showSidebar = () => {
-            setBarVisible(true);
-        }
-
-        const hideSidebar = () => {
-            setBarVisible(false);      
-        }
 
         const toggleSidebar = () => {
             setBarOpen(!isBarOpen)
 
-            if(!isBarOpen) {
-                tl.fromTo(block.current, 0.6, window[section], {width: "90vw", height: "90vh", margin: `${margin}`}) // OTWARTY SIDEBAR
-            } else if (isBarOpen) {
-
-                switch (section) {                                                                         // ZAMKNIETY SIDEBAR
-                    case "home":
-                        tl.to(block.current, 0.6, home);
-                        break;
-                    case "about":
-                        console.log("about")
-                        tl.to(block.current, 0.6, {width: "0vw", margin: `${margin}`})
-                        break;
-                    case "skills":
-                        tl.to(block.current, 0.6, skills);
-                        break;
-                    case "projects":
-                        tl.to(block.current, 0.6, projects)
-                        break;
-                    default:
-                }
+            if(isBarOpen) {
+                tl.to(block.current, 0, eval(section))
+            } else if (!isBarOpen) {
+                tl.to(block.current, 0, {width: "100vw", height: "100vh", margin: "0"})
+            }
             }           
-        }
     
     const changeSection = (e) => {
-        setBarOpen(!isBarOpen);
-        setSection(e.target.dataset.key);
+        setBarOpen(false);
+        setSection(e.target.dataset.key)
+        const currentSection = eval(e.target.dataset.key)
+ 
 
-        switch (e.target.dataset.key) {
-            case "home":
-                tl.to(block.current, 0.6,   {width: "90vw", margin: `${margin}`})
-                .delay(1.2)
-                tl.to(block.current, 0.6, home);
-                break;
-            case "about":
-                tl.to(block.current, 0.6,   {width: "90vw", margin: `${margin}`})
-                .delay(1.2)
-                .to(block.current, 0.6, about)
-                break;
-            case "skills":
-                tl.to(block.current, 0.6, {width: "90vw", margin: `${margin}`})
-                .delay(1.2)
-                .to(block.current, 0.6, skills);
-                break;
-            case "projects":
-                tl.to(block.current, 0.6,   {width: "90vw", margin: `${margin}`})
-                .delay(1.2)
-                .to(block.current, 0.6, projects);
-                break;
-            default:
-        }
-
+        if(ignore.current) return;
+        tl.to(block.current, 0, {width: ifMobile ? "100vw":  "90vw", height: ifMobile ? "100vh" :  "90vh", margin: `${margin}`})
+        setTimeout(() => {
+            console.log(currentSection)
+        tl.to(block.current, 0.6, currentSection)
+        }, 2000)
     }
+
+
+
 
     const setPL = () => {
         setLanguage("PL")
@@ -164,6 +136,16 @@ const Base = (props) => {
 
     const setENG = () => {
         setLanguage("ENG")
+    }
+
+    const showSidebar = () => {
+        setBarVisible(true);
+        setCursor("hoverAble");
+    }
+
+    const hideSidebar = () => {
+        setBarVisible(false); 
+        setCursor("default")  ;  
     }
 
         return (
@@ -176,16 +158,16 @@ const Base = (props) => {
                             <Sidebar setPL={setPL}  setENG={setENG} currentLanguage={language} changeSection={changeSection}/>
                         </SidebarWrapper>
 
-                        <Block ref={block} section={section}/>
-                            <Switch style={{zIndex: "3"}}>    
-                                <Route style={{zIndex: "3"}} path='/'  component={Home} exact/>
-                                <Route style={{zIndex: "3"}}  path='/about'  component={About}/>
-                                <Route style={{zIndex: "3"}}  path='/skills'  component={Skills}/>
-                                <Route style={{zIndex: "3"}}  path='/projects'  component={Projects}/>
+                        <Block ref={block} section={section} className={isBarOpen ? "fixed-top" : ""}/>
+                            <Switch>    
+                                <Route path='/'  component={Home} exact/>
+                                <Route path='/about'  component={About}/>
+                                <Route  path='/skills'  component={Skills}/>
+                                <Route  path='/projects'  component={Projects}/>
                             </Switch> 
                         <Language setPL={setPL}  setENG={setENG} currentLanguage={language}/>
                         <LineNavWrapper className="fixed-top">
-                            <LineNav /> 
+                            <LineNav changeSection={changeSection} /> 
                         </LineNavWrapper>
                         
                 </Container>

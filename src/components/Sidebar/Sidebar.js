@@ -9,13 +9,13 @@ const Wrapper = styled.div`
 height: 100vh;
 width:  80vw;
 z-index: 1;
-transition-duration: .3s;
+transition-duration: .5s;
 transition-timing-function: cubic-bezier(.17,.30,.60,.38);
 transform: ${({isBarVisible, isBarOpen}) => {
     if(isBarOpen === true) {
-        return "translate(-16vw)"    
+        return "translate(-10vw)"    
     } else if(isBarOpen === false) {
-        return isBarVisible ? `translate(${window.innerWidth < 676 ? "-40vw" : "-72vw"})` : "translate(-80vw)"
+        return isBarVisible ? `translate(${window.innerWidth < 676 ? "-100vw" : "-72vw"})` : "translate(-80vw)"
     } 
 }};
 background-color: white;

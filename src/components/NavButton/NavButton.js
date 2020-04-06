@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { NavbarContext } from '../../contexts/NavbarContext'
 
+
 const Wrapper = styled.div`
 `
 const Button = styled.div`
 width: 60px;
 height: 60px;
-position: absolute;
+position: fixed;
 top: 46vh;
 transition: .4s;
 left: ${({isBarOpen}) => isBarOpen ? "13vw" : "2vw"};
@@ -31,7 +32,7 @@ animation: slideFromLeft 3s forwards;
         }
     }
     @media (max-width: 676px) {
-        top: 2rem;
+        top: .6rem;
         left: 76vw;
         background-color: white;
         border-radius: 50%;
@@ -91,8 +92,7 @@ opacity: ${({isBarOpen}) => isBarOpen ? "0" : "1"};
 }
 `
 
-const NavButton = ({enter, hide, toggle}) => {
-
+const NavButton = ({enter, hide, toggle}) => { 
     const { isBarOpen } = useContext(NavbarContext);
     
     return (

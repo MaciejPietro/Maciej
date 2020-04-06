@@ -1,56 +1,40 @@
-import React, {useEffect, useRef} from 'react'
-import  {createGlobalStyle} from 'styled-components'
+import React, {useEffect, useRef, useContext} from 'react'
+import { NavbarContext } from '../../contexts/NavbarContext'
 import SkillsHeader from '../../components/SkillsHeader/SkillsHeader'
 import ProgrammingLanguages from '../../components/ProgrammingLanguages/ProgrammingLanguages'
 import Loading from '../../components/Loading/Loading'
 
-const Global = createGlobalStyle`
-body {
-      overflow-y: scroll;
-      overflow-x: hidden;
-
-  }
-` 
-
 
 function Skills() {
-
+    const { isBarOpen } = useContext(NavbarContext);
     let i = 0;
     const txt = "Lady, running down to the riptide Taken away to the dark side I wanna be your left hand man I love you when youre singing that song and to the riptide Taken away to the dark side I wanna be your left hand man I love you when youre singing that song and to the riptide Taken away to the dark side I wanna be your left hand man I love you when youre singing that song and";
     let txtWrapper = useRef(null)
-
-    // function selfWritingText() {
-    //     setTimeout(() => setInterval(() => {
-    //         if (i < txt.length && ignore) {
-    //             document.getElementById("text").innerHTML += txt.charAt(i);
-    //             i++;
-    //         }
-    //     }, 16), 3000)
-    // }
+    let ignore = useRef(false)
 
 useEffect(() => {
-    // window.scrollTo(0, 0)
-    let ignore = false;
-
-    function selfWritingText() {
+    window.scrollTo(0, 0)
+    document.querySelector('body').style.overflowY = "scroll"
+    document.querySelector('body').style.overflowX = "hidden"
+    
+    if(ignore.current) return;
         setTimeout(() => setInterval(() => {
-            if (i < txt.length && !ignore) {
+            if (i < txt.length && !ignore.current) {
                 document.getElementById("text").innerHTML += txt.charAt(i);
                 i++;
             }
         }, 16), 3000)
-    }
-    selfWritingText()
-    return  () => ignore = true
- }, [i])
+
+
+    return () => ignore.current = true
+ }, [])
 
 
     return (
         <>  
-            <Global/>
             <Loading />
-            <SkillsHeader txtWrapper={txtWrapper}/>
-            <ProgrammingLanguages />
+            <SkillsHeader txtWrapper={txtWrapper} isBarOpen={isBarOpen}/>
+            <ProgrammingLanguages isBarOpen={isBarOpen}/>
         </>
             
         

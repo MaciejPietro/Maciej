@@ -34,23 +34,12 @@ color: 	#72a0b8;
 margin: 0;
     &::before {
         height: 2px;
-        animation: drawLine3 1s forwards ease-out 2.2s;
+        animation: drawLine3 0.8s forwards ease-out 3.2s;
         background-color: grey;
         opacity: .6;
         content: '';
         position: absolute;  
         margin-top: -1.4rem;  
-    }
-    &::after {
-        width: 4px;
-        display: none;
-        animation: drawLine 1s forwards ease-out 1.8s;
-        background-color: #76b4bd;
-        content: '';
-        position: absolute;
-        top: -8rem;
-        margin-left: 3rem;
-        opacity: .6;
     }
     @media (max-width: 1200px) {
         &::before {
@@ -58,6 +47,13 @@ margin: 0;
         }
         &::after {
             top: -8rem;
+        }
+    }
+    @media (max-width: 576px) {
+        padding: 5rem 0 0 0;
+        text-align: center;
+        &::before {
+            margin-left: -10vw; 
         }
     }
 
@@ -69,39 +65,29 @@ margin: 0;
 transform: translate(9rem);
 &::after {
     height: 2px;
-    animation: drawLine4 1s forwards ease-out 2.2s;
+    animation: drawLine4 0.8s forwards ease-out 3.2s;
     background-color: grey;
     opacity: .6;
     content: '';
     position: absolute;
     top: 7rem; 
-    left: 0; 
+
 }
-    &::before {
-        width: 4px;
-        animation: drawLine2 1s forwards ease-out 2.2s;
-        background-color: #76b4bd;
-        display: none;
-        opacity: .6;
-        content: '';
-        position: absolute;
-        top: 8rem;
-        margin-left: -3rem;
-    }
 @media (max-width: 1200px) {
         &::after {
             width: 17rem;   
         }
     }
-@media (max-width: 576px) {
-    &::before {
-        margin-left: -24vw; 
-    }
-}
+    @media (max-width: 576px) {
+        text-align: center;
+        transform: translate(0);
+        &::after {
+            margin-left: 10vw; 
+        }
 ` 
 
 const Text = styled.main`
-padding: 4rem 7rem;
+padding: 4rem 5rem;
     &::after {
         width: 2rem;
         height: 2rem;
@@ -116,6 +102,7 @@ padding: 4rem 7rem;
     }
 @media (max-width: 576px) {
     padding: 5rem 10vw 0 10vw;
+    text-align: justify;
 }
 `
 

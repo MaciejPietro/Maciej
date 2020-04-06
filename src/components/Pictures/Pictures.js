@@ -50,14 +50,28 @@ height: 50vh;
         top: -9rem;
     }
 @media (max-width: 1200px) {
-    margin-left: -6rem;
+    margin-left: -10vw;
     margin-top: 3rem;
 }
 @media (max-width: 991px) {
-    margin-left: -8rem;
+    margin-left: -20vw;
+    margin-top: 3rem;
 }
-@media (max-width: 676px) {
-    margin-left: -12rem;
+@media (max-width: 767px) {
+    margin-left: -34vw;
+    margin-top: -3rem;
+}
+@media (max-width: 576px) {
+    margin-left: -22vw;
+    margin-top: 3rem;
+}
+@media (max-width: 476px) {
+    margin-left: -30vw;
+    margin-top: 8rem;
+}
+@media (max-width: 400px) {
+    margin-left: -40vw;
+    margin-top: 14rem;
 }
 `
 
@@ -79,6 +93,11 @@ position: absolute;
         background-position: -5.2rem  -5rem;
         transform: rotate(-45deg) scale(1.4);
     }
+@media (max-width: 576px) {
+    width: 8rem;
+    height: 8rem;
+    transform: rotate(45deg) translate(6.3rem, -12rem)!important;
+}
 `
 const Lozenge2 = styled.div`
 width: 12rem;
@@ -98,6 +117,11 @@ opacity: 1;
         background-position: -1.5rem .7rem;
         transform: rotate(-45deg) scale(1.6);
     }
+@media (max-width: 576px) {
+    width: 8rem;
+    height: 8rem;
+    transform: rotate(45deg) translate(3.2rem, -3.2rem)!important;
+}
 `
 
 const Lozenge3 = styled.div`
@@ -118,6 +142,11 @@ opacity: 1;
         background-position: -2.4rem .3rem;
         transform: rotate(-45deg) scale(1.4);
     }
+@media (max-width: 576px) {
+    width: 8rem;
+    height: 8rem;
+    transform: rotate(45deg) translate(12rem, -7.5rem)!important;
+}
 `
 const Lozenge4 = styled.div`
 width: 15rem;
@@ -138,7 +167,11 @@ opacity: 1;
         background-position: 0rem  2rem;
         transform: rotate(-45deg) scale(1.4);
     }
-
+@media (max-width: 576px) {
+    width: 10rem;
+    height: 10rem;
+    transform: rotate(45deg) translate(8rem, 3rem)!important;
+}
 `
 const Lozenge5 = styled.div`
 width: 9rem;
@@ -157,25 +190,15 @@ opacity: 1;
         background-position: 0rem -3rem;
         transform: rotate(-45deg) scale(1.4);
     }
-
-`
-
-const TextWrapper = styled.div`
-display: none;
-font-family: 'Monsterrat';
-font-size: .8rem;
-width: 14rem;
-height: 8rem;
-position: absolute;
-transform: translate(-1.6rem, -18rem) rotate(-45deg);
-@media (max-width: 1200px) {
-    transform: translate(5.6rem, -20rem) rotate(-45deg) 
-}
+@media (max-width: 576px) {
+    width: 6rem;
+    height: 6rem;
+    transform: rotate(45deg) translate(20rem, 1rem)!important;
+}    
 `
 
 
 function Pictures({reference}) {
-
     const { mouseX, mouseY } = useContext(MouseContext);
 
     window.addEventListener('mousemove', () => {
@@ -183,18 +206,12 @@ function Pictures({reference}) {
 
     return (
         <Wrapper ref={reference}>
-            <TextWrapper>
-                <b>Poza front endem</b><br/>
-            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. 
-            Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in t
-            heir exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-            </TextWrapper>
             <LozengeWrapper>
-                <Lozenge img={meLaptop} style={{transform: `rotate(45deg) translate(${10 + mouseX/1900}rem, ${-18 + mouseY/2400}rem)`}}/>               
-                <Lozenge2 img={water} style={{transform: `rotate(45deg) translate(${5 + -mouseX/2200}rem, ${-5 + -mouseY/1800}rem)`}}/>
+                <Lozenge img={meLaptop} style={{transform: `rotate(45deg) translate(${10 + mouseX/3300}rem, ${-18 + mouseY/3400}rem)`}}/>               
+                <Lozenge2 img={water} style={{transform: `rotate(45deg) translate(${5 + -mouseX/2200}rem, ${-5 + -mouseY/2200}rem)`}}/>
                 <Lozenge3 img={meBike} style={{transform: `rotate(45deg) translate(${18 + -mouseX/1800}rem, ${-10 + -mouseY/2200}rem)`}}/>
-                <Lozenge4 img={norway} style={{transform: `rotate(45deg) translate(${12 + -mouseX/1300}rem, ${4.6 + -mouseY/900}rem)`}}/>
-                <Lozenge5 img={road} style={{transform: `rotate(45deg) translate(${29.5 + mouseX/2900}rem, ${1.6 + mouseY/2400}rem)`}}/>
+                <Lozenge4 img={norway} style={{transform: `rotate(45deg) translate(${12 + -mouseX/4300}rem, ${4.6 + -mouseY/3900}rem)`}}/>
+                <Lozenge5 img={road} style={{transform: `rotate(45deg) translate(${29.5 + mouseX/5900}rem, ${1.6 + mouseY/5400}rem)`}}/>
             </LozengeWrapper>
         </Wrapper>
         

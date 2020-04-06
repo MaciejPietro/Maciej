@@ -1,13 +1,17 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import skillsLaptop from '../../img/skillsLaptop.jpg'
 import ScrollIcon from '../ScrollIcon/ScrollIcon'
+import { NavbarContext } from '../../contexts/NavbarContext'
 
 const Wrapper = styled.div`
 position: absolute;
 height: 200vh;
 padding: 0 6vw 0 0;
 z-index: 1;
+transition: 1s;
+opacity: ${({isBarOpen}) => isBarOpen ? ".6" : "1"};
+
 `
 const My = styled.div`
 position: absolute;
@@ -21,7 +25,10 @@ line-height: 5.7rem;
 color: #1C1B20;
 transform: rotateX(-90deg);
 opacity: 0;
-animation: skillsMyShowUp .8s forwards 2.6s;
+animation: skillsMyShowUp .8s forwards 3.1s;
+@media (max-width: 676px) {
+    font-size: 6rem;
+    left: -40vw;
 }
 `
 
@@ -38,8 +45,11 @@ color: white;
 transform: translateY(-5vh) rotateX(-90deg);
 transform-origin: top;
 opacity: 0;
-animation: skillsSkillsShowUp .8s forwards 2.2s;
+animation: skillsSkillsShowUp .8s forwards 2.9s;
 z-index: 0;
+@media (max-width: 676px) {
+    font-size: 8rem;
+    left: -40vw;
 }
 `
 
@@ -54,7 +64,7 @@ background-image: url(${({img}) => img});
 background-size: 240%;
 background-position: center;
 opacity: 0;
-animation: skillsScaleImage 2s forwards 1.2s;
+animation: skillsScaleImage 1.6s forwards 2.6s;
 overflow: hidden;
 z-index: -1;
     &:before {
@@ -66,7 +76,7 @@ z-index: -1;
         left: 0;
         margin-top: 0vh;
         background-color: #1C1B20;
-        animation: skillsImage 1s forwards 2.22s;
+        animation: skillsImage 1s forwards 2.8s;
     }
 @media (max-width: 991px) {
     animation: none;
@@ -99,12 +109,11 @@ color: white;
 `
 
 
-function SkillsHeader({txtWrapper}) {
-
+function SkillsHeader({txtWrapper, isBarOpen}) {
 
 
     return (
-        <Wrapper>
+        <Wrapper isBarOpen={isBarOpen}>
             <ScrollIcon top={"86vh"} left={"-40vw"} color={"white"}/>
             <My>MY </My><br/>
             <Skills>Skills </Skills>

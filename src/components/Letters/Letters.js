@@ -12,7 +12,7 @@ height: 160px;
 `
 
 const LetterE = styled.div`
-width: 150px;
+width: 120px;
 height: 160px;
 page-break-after: always; 
 break-after: always; 

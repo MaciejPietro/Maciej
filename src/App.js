@@ -6,6 +6,8 @@ import { CurrentSectionProvider } from './contexts/CurrentSectionContex'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { NavbarProvider } from './contexts/NavbarContext'
 import { MouseProvider } from './contexts/MouseContext'
+import { CursorProvider } from './contexts/CursorContext'
+import Cursor from './components/Cursor/Cursor'
 import './animations/animations.css'
 import Base from './containers/Base/Base'
 import Rockout from './fonts/Rockout.ttf'
@@ -28,8 +30,9 @@ body {
   overflow: hidden;
   margin: 0;
   font-family: 'Rockout', cursive;
+  cursor: default;
   @media (max-width: 991px) {
-    overflow: scroll;
+    overflowY: scroll;
   }
 }
 ::-webkit-scrollbar {
@@ -40,41 +43,19 @@ body {
 
 
 const App = (props) => {
-
-
-  // let cos = 0;
-//   window.addEventListener('mousewheel', (e) => {
-//      console.log("scroll")
-//       return <Redirect to='/about' />
-    
-//       console.log(cos)
-//       cos +=  e.deltaY
-//       if(cos < 1000) {
-//         console.log("powinno sie zmienic na home")
-//       }
-//       else if(cos > 1000 && cos < 2000) {
-//         console.log("powinno sie zmienic na about")
-    
-//       } else if(cos > 2000 && cos < 3000) {
-//         console.log("powinno sie zmienic na skills")
-//       }
-  
-// }
-//   )
-
-// })
-
-
   return (
     <MouseProvider>
       <LanguageProvider>
         <NavbarProvider>
-          <CurrentSectionProvider>
-            <Global />
-            <Router>
-              <Route path='/' component={Base}/>
-            </Router>
-          </CurrentSectionProvider>
+          <CursorProvider>
+            <CurrentSectionProvider>
+              <Global />
+              <Cursor />
+              <Router>
+                <Route path='/' component={Base}/>
+              </Router>
+            </CurrentSectionProvider>
+          </CursorProvider>
         </NavbarProvider>
       </LanguageProvider>
     </MouseProvider>

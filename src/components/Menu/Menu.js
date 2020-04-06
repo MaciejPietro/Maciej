@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import { LanguageContext } from '../../contexts/LanguageContext'
 import { NavbarContext } from '../../contexts/NavbarContext'
+import { CursorContext } from '../../contexts/CursorContext'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faFacebook, faYoutube } from '@fortawesome/free-brands-svg-icons'
@@ -108,6 +109,7 @@ function Menu({ changeSection }) {
     let item3 = useRef(null);
     let item4 = useRef(null);
     let item5 = useRef(null);
+    const { setCursor } = useContext(CursorContext); 
     const { language } = useContext(LanguageContext);
     const { isBarOpen } = useContext(NavbarContext);
 
@@ -142,16 +144,18 @@ function Menu({ changeSection }) {
 
   const enterItem = (e) => {
       e.target.classList.add('active')
+      setCursor("hoverAble")
   }
   const leaveItem = (e) => {
     e.target.classList.remove('active')
+    setCursor("default")
   }
     return (
         
         <Wrapper>
             <List >
                 <StyledLink exact to='/'>
-                    <ListItem isBarOpen={isBarOpen} ref={item} className="anima" delay={"0.5s"} data-key="home" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} pink>
+                    <ListItem isBarOpen={isBarOpen} ref={item}  delay={"0.5s"} data-key="home" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} pink>
                         {language === "PL" ? "Glowna." : "Home."}
                     </ListItem>
                 </StyledLink>
@@ -185,9 +189,9 @@ function Menu({ changeSection }) {
                 <ContactDetails>tel: 663417209</ContactDetails>
                 <ContactDetails>mail: mpietrolaj1@wp.pl</ContactDetails>
             </Contact>
-            <SocialMedia ref={social}>
+            <SocialMedia ref={social} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")}>
                 <FontAwesomeIcon icon={faGithub} color="gray" size="lg"/>
-                <FontAwesomeIcon icon={faFacebook} color="gray" size="lg"/>
+                <FontAwesomeIcon icon={faFacebook} color="gray" size="lg" />
                 <FontAwesomeIcon icon={faYoutube} color="gray" size="lg"/>                       
             </SocialMedia>      
         </Wrapper>

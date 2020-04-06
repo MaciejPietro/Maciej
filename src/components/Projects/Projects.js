@@ -1,42 +1,50 @@
 import React, {useState, useRef, useEffect} from 'react'
 import styled from 'styled-components'
-import TrackVisibility from 'react-on-screen';
 import Project1 from '../../img/Project1.jpg'
 import Project3 from '../../img/Project3.jpg'
 import { Mug, Rocket } from '../../contexts/LanguageIcons'
 
 
 const Wrapper = styled.div`
-width: 90vw;
+width: ${window.innerWidth > 676 ? "90vw" : "100vw"};
 height: 0%;
 position: absolute;
 background-color: #cca32b;
-top: 50vh;
+top: 46vh;
 margin-top: 3vw;
-left: 5vw;
+left: ${window.innerWidth < 676 ? "0" : "5vw"};
 display: flex;
 flex-wrap: wrap;
 flex-basis: 1;
-transition: 2s;
+transition: 1s;
+@media (max-width: 676px) {
+    height: 200%;
+}
 `
 
 const Row = styled.div`
-margin-top: 12rem;
+margin-top: 6rem;
 width: 90vw;
+height: 40vh;
 display: flex;
 flex-direction: row;
+transition: .8s;
+opacity: ${({isBarOpen}) => isBarOpen ? "0" : "1"};
+@media (max-width: 676px) {
+    flex-direction: column;
+}
 `
 // transform: ${({toRight}) => toRight ? "perspective(80rem) rotateY(30deg) translateY(10rem)" : "perspective(80rem) rotateY(-30deg) translateY(10rem)"};
 const Project = styled.div`
-width: 45vw;
+width: ${window.innerWidth < 676 ? "100vw" : "45vw"};
 height: 40vh;
 transition: .3s;
 display: flex;
 justify-content:center;
 align-items: center;
 overflow: hidden;
-opacity: 0;
 transform: none;
+opacity: 0;
     &:before {
         content: '';
         width: 45vw;
@@ -136,7 +144,8 @@ display: block;
 `
 
 const Description = styled.div`
-width: 45vw;
+width: ${window.innerWidth < 676 ? "100vw" : "45vw"};
+height: 40vh;
 opacity: 0;
 transform: translateY(10rem);
 `
@@ -174,53 +183,54 @@ margin-left: 16vw;
 
 
 
-function Projects() {
+function Projects({isBarOpen}) {
 let wrapp = useRef(null)
 let des1 = useRef(null)
 let des2 = useRef(null)
 let pro1 = useRef(null)
 let pro2 = useRef(null)
-
-
 const body = document.querySelector('body')
-let i = 0;
+let ignore = useRef(false)
 
-const scroll = (e) => {
-    i += e.deltaY / 100 
+useEffect(() => {
+ let i = 0;
+body.style.overflowY = "hidden"
+
+
+if(ignore.current) return;
+
+const scroll = e => {
+    i += e.deltaY / 100
     console.log(i)
-    if(i === 3) {
-        wrapp.current.style.height = "150%";
+    if(i > 3) {
+        console.log("weszlo")
+        wrapp.current.style.height = "120%";
     }
-    if(i === 7) {
-        body.style.overflow = "scroll"
+    if(i > 6) {
+        body.style.overflowY = "scroll"
     }
-    if(i === 10) {
+    if(i > 8) {
         des1.current.style.animation = "fadeIn .8s forwards"
         pro1.current.style.animation = "fadeInLeft .8s forwards .6s"
     }
-    if(i === 14) {
+    if(i > 11)  {
         des2.current.style.animation = "fadeIn .8s forwards"
         pro2.current.style.animation = "fadeInRight .8s forwards .6s"
     }
-    }
-
-useEffect(() => {
-
-    
-    body.style.overflowY = "hidden"
-
+}
 window.addEventListener('mousewheel', (e) => {
-    scroll(e)
+  scroll(e)
 })
-return () => scroll()
-}, [])
+
+return  () => ignore.current = true
+}, [body.style.overflowY])
 
      
 
 
     return (       
         <Wrapper ref={wrapp}>
-                <Row>
+                <Row isBarOpen={isBarOpen}>
                     <Description ref={des1}>
                         <IconWrapper><Mug /></IconWrapper>
                         <Text>
@@ -234,7 +244,7 @@ return () => scroll()
                             </p>
                         </Text>
                     </Description>
-                    <Project className="ml-auto " img={Project3} ref={pro1}>
+                    <Project className="ml-auto " img={Project3} ref={pro1} isBarOpen={isBarOpen}>
                         <Icon></Icon>
                         <Lines></Lines>
                     </Project> 
@@ -243,8 +253,8 @@ return () => scroll()
 
 
 
-                <Row>
-                <Project className="mr-auto" img={Project1} ref={pro2} toRight>  
+                <Row isBarOpen={isBarOpen}>
+                <Project className="mr-auto" img={Project1} ref={pro2} toRight >  
                     <Icon></Icon>
                     <Lines></Lines>     
                 </Project>

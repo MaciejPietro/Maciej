@@ -11,6 +11,12 @@ flex-direction: row;
 left: 5vw;
 top: 100vh;
 z-index: 1;
+transition: 1.4s;
+opacity: ${({isBarOpen}) => isBarOpen ? "0" : "1"};
+@media (max-width: 676px) {
+    width: 100vw;
+    left: 0;
+}
 `
 
 const Box = styled.div`
@@ -53,11 +59,15 @@ h5 {
     }
     h5{  
         margin: ${({right}) => right ? "0.5rem 20% 0 0" : "0.5rem 0 0 16%"};
-
     }
 }
 h5{
     margin: 0.5rem 0 0 2vw;
+}
+@media (max-width: 1067px) {
+    strong {
+        font-size: 1.6rem;
+    }
 }
 @media (max-width: 991px) {
     width: 54vw;
@@ -66,6 +76,20 @@ h5{
 @media (max-width: 676px) {
     width: 72vw;
     margin-left: ${({right}) => right ? "0" : "0"};
+    &:hover {
+        color: white;
+        span {
+            &:after{
+                height: 0;
+            }
+        }
+        div {
+            opacity: 0;
+        }
+        h5{  
+            margin: 0;
+        }
+    }
 }
 `
 const IconWrapper = styled.div`
@@ -111,30 +135,34 @@ width: 35vw;
 @media (max-width: 991px) {
         width: 54vw;
         &:after  {
-            width: 70vw;
+            width: 55vw;
             margin-left: ${({right}) => right ? "-53vw" : "0"};
         }
         &:before {
-            margin-left: ${({right}) => right ? "-54.4vw" : "51.7vw"};
+            margin-top: -.5rem;
+            margin-left: ${({right}) => right ? "-54.4vw" : "53.7vw"};
+            width: 1.2rem;
+            height: 1.2rem;
         }
 }
 @media (max-width: 676px) {
     width: 70vw;
+    opacity: .3;
     &:after  {
         width: 70vw;
         margin-left: ${({right}) => right ? "-70vw" : "0"};
     }
     &:before {
-        margin-left: ${({right}) => right ? "-72vw" : "67.6vw"};
+        display: none;
     }
 }
 `
 
 
 
-function ProgrammingLanguages() {
+const ProgrammingLanguages = ({isBarOpen}) => {
     return (
-        <Wrapper>
+        <Wrapper isBarOpen={isBarOpen}>
             <Box className="row">
                 <Row>
                     <IconWrapper>

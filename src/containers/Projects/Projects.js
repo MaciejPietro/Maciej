@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useContext} from 'react'
+import { NavbarContext } from '../../contexts/NavbarContext'
 import ProjectsHeader from '../../components/ProjectsHeader/ProjectsHeader'
 import Projects from '../../components/Projects/Projects'
 import Loading from '../../components/Loading/Loading'
@@ -7,7 +8,7 @@ import Loading from '../../components/Loading/Loading'
 
 
 function Skills() {
-
+    const { isBarOpen } = useContext(NavbarContext);
 
 useEffect(() => {
     window.scrollTo(0, 0)
@@ -15,8 +16,8 @@ useEffect(() => {
     return (
         <>
             <Loading />
-            <ProjectsHeader />
-            <Projects />
+            <ProjectsHeader isBarOpen={isBarOpen}/>
+            <Projects isBarOpen={isBarOpen}/>
         </>
             
         
