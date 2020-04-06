@@ -33,11 +33,11 @@ animation: slideFromLeft 3s forwards;
     }
     @media (max-width: 676px) {
         top: .6rem;
-        left: 76vw;
+        left:  80%;
         background-color: white;
         border-radius: 50%;
-        height: 38px;
-        width: 52px;
+        height: 60px;
+        width: 60px;
         padding: 20px 0 0 8px;
         animation: slideFromRight 3s forwards;
     }

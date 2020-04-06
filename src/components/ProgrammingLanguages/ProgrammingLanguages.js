@@ -10,7 +10,7 @@ display: flex;
 flex-direction: row;
 left: 5vw;
 top: 100vh;
-z-index: 1;
+z-index: 0;
 transition: 1.4s;
 opacity: ${({isBarOpen}) => isBarOpen ? "0" : "1"};
 @media (max-width: 676px) {
@@ -24,6 +24,13 @@ width: 70vw;
 background-color: transparent;
 left: 0;
 margin:10vh 10vw 0;
+div:last-child {
+    margin-bottom: 8rem;
+}
+@media (max-width: 375px) {
+padding-top: 20vh;
+}
+
 `
 const Row = styled.div`
 height: 6rem;
@@ -158,6 +165,15 @@ width: 35vw;
 }
 `
 
+const Footer = styled.div`
+width: 90vw;
+color: white;
+text-align: center;
+margin-top: 3rem;
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 1rem;
+letter-spacing: 1.4px;
+`
 
 
 const ProgrammingLanguages = ({isBarOpen}) => {
@@ -239,9 +255,7 @@ const ProgrammingLanguages = ({isBarOpen}) => {
                     <h5>plans for<br /> <strong>React Native</strong></h5>
                     <Line className="mt-2 bg-dark"/>
                 </Row>
-
-
-
+                <Footer>GSAP, npm, yarn, Webpack, RWD, REST API, Fetch Api, basic of: Express.js, MongoDB</Footer>
             </Box>
         </Wrapper>
     )

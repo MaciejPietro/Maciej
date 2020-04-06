@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import skillsLaptop from '../../img/skillsLaptop.jpg'
 import ScrollIcon from '../ScrollIcon/ScrollIcon'
-import { NavbarContext } from '../../contexts/NavbarContext'
 
 const Wrapper = styled.div`
 position: absolute;
@@ -94,17 +93,38 @@ z-index: 4;
 position: absolute;
 width: 45vw;
 padding: 1vw 10vw;
-top: ${window.innerWidth < 676 ? "51.6vh" : "71.6vh"};
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 1.2rem;
+letter-spacing: 1.4px;
+font-weight: 400;
+color: white;
+top: 66.6vh;
 left: -40vw;
-font-size: 1rem;
-font-family: 'Rockout';
 margin: 0;
 line-height: 1.6rem;
-letter-spacing: 1.6px;
 color: white;
+@media (max-width: 1500px) {
+    width: 50vw;
+    padding: 1vw 5vw;
+}
+@media (max-width: 991px) {
+    font-size: 1rem;
+    padding: 0vw 5vw;
+    top: 62.6vh;
+}
+@media (max-width: 767px) {
+    font-size: 0.8rem;
+}
 @media (max-width: 676px) {
+    top : 46.6vh;
     width: 90vw;
     padding: 1vw 5vw;
+    font-size: 1.2rem;
+}
+@media (max-width: 410px) {
+    top: 50vh;
+    padding: 1vw 5vw;
+    font-size: 1.2rem;
 }
 `
 
@@ -114,7 +134,7 @@ function SkillsHeader({txtWrapper, isBarOpen}) {
 
     return (
         <Wrapper isBarOpen={isBarOpen}>
-            <ScrollIcon top={"86vh"} left={"-40vw"} color={"white"}/>
+            <ScrollIcon top={"86vh"} left={"-40vw"} color={"white"} opacity={"0.5"}/>
             <My>MY </My><br/>
             <Skills>Skills </Skills>
             <Image img={skillsLaptop}/>

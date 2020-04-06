@@ -1,8 +1,9 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useContext, useRef, useEffect} from 'react'
 import styled from 'styled-components'
 import Project1 from '../../img/Project1.jpg'
 import Project3 from '../../img/Project3.jpg'
 import { Mug, Rocket } from '../../contexts/LanguageIcons'
+import { LanguageContext } from '../../contexts/LanguageContext'
 
 
 const Wrapper = styled.div`
@@ -23,12 +24,16 @@ transition: 1s;
 `
 
 const Row = styled.div`
-margin-top: 6rem;
+margin-top: 10rem;
 width: 90vw;
 height: 40vh;
 display: flex;
 flex-direction: row;
 transition: .8s;
+padding: 0 1vw;
+&:last-child {
+    margin-bottom: 5rem;
+}
 opacity: ${({isBarOpen}) => isBarOpen ? "0" : "1"};
 @media (max-width: 676px) {
     flex-direction: column;
@@ -184,6 +189,7 @@ margin-left: 16vw;
 
 
 function Projects({isBarOpen}) {
+const { language } = useContext(LanguageContext);
 let wrapp = useRef(null)
 let des1 = useRef(null)
 let des2 = useRef(null)
@@ -201,19 +207,17 @@ if(ignore.current) return;
 
 const scroll = e => {
     i += e.deltaY / 100
-    console.log(i)
     if(i > 3) {
-        console.log("weszlo")
         wrapp.current.style.height = "120%";
     }
-    if(i > 6) {
+    if(i > 5) {
         body.style.overflowY = "scroll"
     }
-    if(i > 8) {
+    if(i > 7) {
         des1.current.style.animation = "fadeIn .8s forwards"
         pro1.current.style.animation = "fadeInLeft .8s forwards .6s"
     }
-    if(i > 11)  {
+    if(i > 9)  {
         des2.current.style.animation = "fadeIn .8s forwards"
         pro2.current.style.animation = "fadeInRight .8s forwards .6s"
     }
@@ -234,14 +238,28 @@ return  () => ignore.current = true
                     <Description ref={des1}>
                         <IconWrapper><Mug /></IconWrapper>
                         <Text>
-                            <h4>
-                                <b>My Portfolio</b><br />
-                                JSX, CSS(only for keyframes), React, JavaScript, GSAP, styled components
-                            </h4>
-                            <p>
-                                My personal porfolio which has goal to presents my current programming and web developing skills
-                                and helps fing first job as a Junior Front End Developer.
-                            </p>
+                            {language === "PL" ? 
+                            <>
+                                <h4>
+                                    <b>Moje portfolio</b><br />
+                                    JSX, CSS(only for keyframes), React, JavaScript, GSAP, styled components
+                                </h4>
+                                <p>
+                                    Moje osobiste portfolio, którego celem jest zaprezentowanie moich dotychczasowo zdobytych umiejętności i pomoc w 
+                                    znalezieniu przyszłej pracy lub stażu. Portfolio jest dostępne w języku polskim i angielskim.
+                                </p>
+                            </>
+                                :
+                            <>
+                                <h4>
+                                    <b>My Portfolio</b><br />
+                                    JSX, CSS(only for keyframes), React, JavaScript, GSAP, styled components
+                                </h4>
+                                <p>
+                                    My personal portfolio, which aims to present my previously acquired skills and help in finding a future job or internship. The portfolio is available in Polish and English.
+                                </p>
+                            </>
+                            }
                         </Text>
                     </Description>
                     <Project className="ml-auto " img={Project3} ref={pro1} isBarOpen={isBarOpen}>
@@ -261,13 +279,31 @@ return  () => ignore.current = true
                 <Description ref={des2}>
                     <IconWrapper><Rocket/></IconWrapper>
                     <Text  toRight>
-                        <h4>
-                            <b>Guitar teacher</b><br />
-                            JSX, CSS(only for keyframes), React, JavaScript, GSAP, styled components
-                        </h4>
-                        <p>
-                            Site of the guitar teacher. Initially It was my site to promte my guitar lessons but the aim had changed during developing.
-                        </p>
+                            {language === "PL" ? 
+                            <>
+                                <h4>
+                                    <b>
+                                    Nauczyciel gry na gitarze
+                                    </b><br />
+                                    JSX, CSS(only for keyframes), React, JavaScript, GSAP, styled components
+                                </h4>
+                                <p>
+                                    Strona nauczyciela gry na gitarze, która początkowo miałabyć stroną oferującą korepetycje dla początkujących.
+                                    Strona nie jest jeszcze skończona.
+                                </p>
+                            </>
+                                :
+                            <>
+                                <h4>
+                                    <b>Guitar Teacher</b><br />
+                                    JSX, CSS(only for keyframes), React, JavaScript, GSAP, styled components
+                                </h4>
+                                <p>
+                                    Strona nauczyciela gry na gitarze, która początkowo miałabyć stroną oferującą korepetycje dla początkujących. 
+                                    Strona nie jest jeszcze skończona.
+                                </p>
+                            </>
+                            }
                     </Text>
                 </Description>
                 </Row>

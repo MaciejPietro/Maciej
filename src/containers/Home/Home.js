@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import Letters from '../../components/Letters/Letters'
 import LettersMobile from '../../components/Letters/LettersMobile'
-import ScrollIcon from '../../components/ScrollIcon/ScrollIcon'
 import Loading from '../../components/Loading/Loading'
 import {TimelineMax, Bounce } from "gsap";
 import styled, {createGlobalStyle}from 'styled-components'

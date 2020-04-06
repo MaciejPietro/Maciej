@@ -21,6 +21,7 @@ transform: ${({isBarVisible, isBarOpen}) => {
 background-color: white;
 display: flex;
 animation: sidebar 2s;
+padding-top: 5vh;
 `
 const MenuContainter = styled.div`
 div:first-child {
@@ -45,6 +46,7 @@ const Sidebar = ({ setPL, setENG, changeSection}) => {
                     <Language setPL={setPL}  setENG={setENG} currentLanguage={language}/>
                     <Menu changeSection={changeSection}/>
                 </MenuContainter>
+                {window.innerWidth > 676 ?  '' : <Language setPL={setPL}  setENG={setENG} currentLanguage={language}/>}  
             </Wrapper>
     )
 }

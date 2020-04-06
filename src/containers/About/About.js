@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useEffect, useContext } from 'react'
 import { TimelineMax} from "gsap";
 import { NavbarContext } from '../../contexts/NavbarContext'

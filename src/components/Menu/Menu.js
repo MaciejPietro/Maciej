@@ -5,7 +5,6 @@ import styled from 'styled-components'
 
 import { LanguageContext } from '../../contexts/LanguageContext'
 import { NavbarContext } from '../../contexts/NavbarContext'
-import { CursorContext } from '../../contexts/CursorContext'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faFacebook, faYoutube } from '@fortawesome/free-brands-svg-icons'
@@ -45,6 +44,7 @@ z-index:0;
 transform: rotateX(-90deg);
 transform-origin: bottom;
     &::before {
+        margin-left: -1rem;
         background-color: ${({pink, blue, yellow, dark, creme}) => {
             if(pink) {
                 return "#FF5851"
@@ -74,6 +74,11 @@ font-family: 'Montserrat', sans-serif;
 letter-spacing: 1.3px;
 color: black;
 line-height: 2px;
+@media (max-height: 420px) {
+    position: absolute;
+    left: -30vw;
+    top: 0;
+}
 `
 
 const SocialMedia = styled.div`
@@ -87,7 +92,12 @@ padding: 0 0 0 2.1rem;
         color: black;
         curson: pointer;
      }
- } 
+ }
+ @media (max-height: 420px) {
+    position: absolute;
+    left: -30vw;
+    top: 50vh;
+}
 `
 
 const Adress = styled.h5`
@@ -109,7 +119,6 @@ function Menu({ changeSection }) {
     let item3 = useRef(null);
     let item4 = useRef(null);
     let item5 = useRef(null);
-    const { setCursor } = useContext(CursorContext); 
     const { language } = useContext(LanguageContext);
     const { isBarOpen } = useContext(NavbarContext);
 
@@ -127,11 +136,11 @@ function Menu({ changeSection }) {
         }
 
         const cos = () => {
-            item.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .25s forwards" : "flip-out-menu 1s"
-            item2.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .40s forwards" : "flip-out-menu 1s"
-            item3.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .55s forwards" : "flip-out-menu 1s"
-            item4.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .70s forwards" : "flip-out-menu 1s"
-            item5.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .85s forwards" : "flip-out-menu 1s"
+            item.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .40s forwards" : "flip-out-menu 1s"
+            item2.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .60s forwards" : "flip-out-menu 1s"
+            item3.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .70s forwards" : "flip-out-menu 1s"
+            item4.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .90s forwards" : "flip-out-menu 1s"
+            item5.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out 1.1s forwards" : "flip-out-menu 1s"
 
         }
             cos()
@@ -144,11 +153,9 @@ function Menu({ changeSection }) {
 
   const enterItem = (e) => {
       e.target.classList.add('active')
-      setCursor("hoverAble")
   }
   const leaveItem = (e) => {
     e.target.classList.remove('active')
-    setCursor("default")
   }
     return (
         
@@ -168,7 +175,7 @@ function Menu({ changeSection }) {
 
                 <StyledLink to='/Maciej/skills'>
                     <ListItem  isBarOpen={isBarOpen} ref={item3} delay={"0.5s"} data-key="skills" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection}  dark>
-                        {language === "PL" ? "Umieejetnosci." : "Skills."}
+                        {language === "PL" ? "Umiejetnosci." : "Skills."}
                     </ListItem>
                 </StyledLink>
 
@@ -189,7 +196,7 @@ function Menu({ changeSection }) {
                 <ContactDetails>tel: 663417209</ContactDetails>
                 <ContactDetails>mail: mpietrolaj1@wp.pl</ContactDetails>
             </Contact>
-            <SocialMedia ref={social} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")}>
+            <SocialMedia ref={social}>
                 <FontAwesomeIcon icon={faGithub} color="gray" size="lg"/>
                 <FontAwesomeIcon icon={faFacebook} color="gray" size="lg" />
                 <FontAwesomeIcon icon={faYoutube} color="gray" size="lg"/>                       

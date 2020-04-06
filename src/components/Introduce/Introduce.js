@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { LanguageContext } from '../../contexts/LanguageContext'
 
 
 const Wrapper = styled.div`
@@ -88,6 +89,12 @@ transform: translate(9rem);
 
 const Text = styled.main`
 padding: 4rem 5rem;
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 1.3rem;
+letter-spacing: 1.4px;
+font-weight: 400;
+color: black;
+
     &::after {
         width: 2rem;
         height: 2rem;
@@ -107,6 +114,7 @@ padding: 4rem 5rem;
 `
 
 function Introduce({reference}) {
+    const { language } = useContext(LanguageContext);
     return (
         <Wrapper ref={reference}>
             <Heading>
@@ -116,12 +124,10 @@ function Introduce({reference}) {
             Developer
             </Heading2>
             <Text>
-                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
-                making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the mo
-                re obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, d
-                iscovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extrem
-                es of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissanc
-                e. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+            {language === "PL" ?
+            "Cześć. Nazywam się Maciej Pietrołaj, mam 23 lata, jestem absolwentem PWSZ w Pile na kierunku filologia angielska, a rok temu zainteresowałem się programowaniem. Wybór padł na programowanie po stronie Front Endu. Nigdy nie żałowałem tej decyzji ponieważ programowanie stało się moją pasją, co skutkowało zaniedbaniem wielu innych zajęć. Poświęciłem setki godzin na kodowanie i setki złotych na kursy online. Poza pisaniem kodu gram na gitarze, jeżdżę na rowerze i okazjonalnie czytam książki o tematyce II wojnie światowej. Ponad programowanie stawiam tylko moją dziewczynę Darię. Aktualnie szukam pierwsze pracy lub stażu jako Junior Front End developerem i jestem skłonny relokować do każdego miasta w Polsce" :
+            "Hi. My name is Maciej Pietrolaj, I'm 23 years old, I've graduated PWSZ in Pila(English Philology) and one year ago I became interested in programming. The choice fell on Front End Development. I have never regretted this decision because programming became my passion, which resulted in many other activities being neglected. I have spent hundreds of hours coding and hundreds of PLN on online courses. In addition to writing the code, I play the guitar, I ride a bike and occasionally read books about World War II. I only put my girlfriend Daria over programming :). I am currently looking for a first job or internship as a Junior Front End developer and I am willing to relocate everywhere in Poland "
+            }
             </Text>
 
         </Wrapper>

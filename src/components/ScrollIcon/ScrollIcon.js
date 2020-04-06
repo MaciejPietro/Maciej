@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons'
@@ -15,7 +15,8 @@ padding: 2rem 1rem;
 position: absolute;
 animation: slideFromBottom 3s forwards;
 z-index: 4;
-opacity: ${window.scrollY > 100 ? "0" : "1"};
+transition: 1s;
+color: white;
 `
 const Text = styled.p`
 color: ${({color}) => color};
@@ -29,13 +30,15 @@ margin: 0.4rem 0 0 0.24rem;
 }
 `
 
-function ScrollIcon({top, left, color}) {
+function ScrollIcon({top, left, color, opacity}) {
     const { language } = useContext(LanguageContext);
+    let icon = useRef();
+    
 
     return (
-        <Wrapper top={top} left={left}>
+        <Wrapper top={top} left={left} opacity={opacity} color={color} ref={icon}>
             <Text color={color}>{language === "PL" ? "Przewin" : "Scroll"}</Text>
-            <FontAwesomeIcon className="scroll-icon" icon={faLongArrowAltDown} size="sm" color={color}/>
+            <FontAwesomeIcon className="scroll-icon" icon={faLongArrowAltDown} size="sm" color={"white"}/>
         </Wrapper>
     )
 }

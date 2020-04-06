@@ -173,9 +173,11 @@
 @keyframes slideFromBottom {
   0%, 80% {
     transform: translateY(20rem);
+    opacity: 0;
   }
   100% {
     transform: translate(0);
+    opacity: 1;
   }
 } 
 

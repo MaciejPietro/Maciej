@@ -6,8 +6,6 @@ import { CurrentSectionProvider } from './contexts/CurrentSectionContex'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { NavbarProvider } from './contexts/NavbarContext'
 import { MouseProvider } from './contexts/MouseContext'
-import { CursorProvider } from './contexts/CursorContext'
-import Cursor from './components/Cursor/Cursor'
 import './animations/animations.css'
 import Base from './containers/Base/Base'
 import Rockout from './fonts/Rockout.ttf'
@@ -47,15 +45,12 @@ const App = (props) => {
     <MouseProvider>
       <LanguageProvider>
         <NavbarProvider>
-          <CursorProvider>
             <CurrentSectionProvider>
               <Global />
-              <Cursor />
               <Router>
                 <Route path='/Maciej/' component={Base}/>
               </Router>
             </CurrentSectionProvider>
-          </CursorProvider>
         </NavbarProvider>
       </LanguageProvider>
     </MouseProvider>

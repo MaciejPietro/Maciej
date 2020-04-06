@@ -1,8 +1,8 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import {NavLink} from 'react-router-dom'
 import { CurrentSectionContext } from '../../contexts/CurrentSectionContex'
-import { CursorContext } from '../../contexts/CursorContext'
+
 
 
 
@@ -178,37 +178,37 @@ const Span = styled.span`
 
 const LineNav = ({changeSection}) => {
     const { section } = useContext(CurrentSectionContext); 
-    const {  setCursor } = useContext(CursorContext); 
+
     
 
     return (
         <Wrapper> 
 
             <StyledLink exact to='/Maciej/' >
-                <HomeCircle data-key="home" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
+                <HomeCircle data-key="home" onClick={changeSection} section={section}  >
                     <Span data-key="home"/>
                 </HomeCircle>
             </StyledLink>
 
             <StyledLink to='/Maciej/about'>
-                <About data-key="about" className="hoverAble" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")}>
+                <About data-key="about" className="hoverAble" onClick={changeSection} section={section}>
                     <Span data-key="about"/>
                 </About>
             </StyledLink>
 
             <StyledLink to='/Maciej/skills'>
-                <Skills data-key="skills" className="hoverAble" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
+                <Skills data-key="skills" className="hoverAble" onClick={changeSection} section={section}  >
                 <Span data-key="skills"/></Skills>
             </StyledLink>
 
             <StyledLink to='/Maciej/projects'>
-                <Projects data-key="projects" className="hoverAble" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
+                <Projects data-key="projects" className="hoverAble" onClick={changeSection} section={section}  >
                     <Span data-key="projects"/>
                 </Projects>
             </StyledLink>
 
             <StyledLink to='/Maciej/contact'>
-                <Contact data-key="contact" className="hoverAble" onClick={changeSection} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
+                <Contact data-key="contact" className="hoverAble" onClick={changeSection}  >
                     <Span data-key="contact"/>
                 </Contact>
             </StyledLink>

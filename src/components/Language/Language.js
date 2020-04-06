@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
 position: absolute;
-top: -1rem;
+top: 1.4vh;
 right: 5rem;
 display: flex;
 flex-direction: row;
@@ -16,11 +16,11 @@ animation: slideFromTop 3s forwards;
 `
 const Pl = styled.h6`
 font-size: .9rem;
-margin-right: 0.6rem;
+margin-left: 0.9rem;
+letter-spacing: 1.6px;
 font-family: 'Monsterrat', sans-serif;
 font-weight: ${({current}) => current === "PL" ? "600" : "400"};
 color: ${({current}) => current === "PL" ? "black" : "grey"};
-letter-spacing: 2px;
 `
 
 const Eng = styled.h6`

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import {Diamond} from '../../contexts/LanguageIcons'
+import { LanguageContext } from '../../contexts/LanguageContext'
+import ScrollIcon from '../../components/ScrollIcon/ScrollIcon'
 
 const Wrapper = styled.div`
 width: 70vw;
@@ -83,7 +85,7 @@ p {
 const DiamondWrapper = styled.span`
 display: block;
 position: absolute;
-left: 30%;
+left: 50%;
 top: 14vh;
 width: 30rem;
 height: 12rem;
@@ -103,20 +105,30 @@ transform: rotate(40deg);
 `
 
 function ProjectsHeader() {
+    const { language } = useContext(LanguageContext);
     return (
         <Wrapper>
             <Heading>
-                My <DiamondWrapper><Diamond /></DiamondWrapper><br />
-                Projects.
+                {language === "PL" ? "Moje" : "My"} <DiamondWrapper><Diamond /></DiamondWrapper><br />
+                {language === "PL" ? "Projekty" : "Projects"}
             </Heading>
-
+            <ScrollIcon top={"40vh"} left={"-5vw"}/>
             <Text>
+                {language === "PL" ? 
                 <h4>
                     <b>Lista ostatnich</b><br />
-                    3 projektow.
+                    dwóch projektów.
                 </h4>
+                :
+                <h4>
+                <b>List of two</b><br />
+                    recent projects.
+                </h4>
+                }
+                
                 <p>
-                    Sa to moje najswiezsze projekty, ktore pokazuja moje umiejetnosci front-endowe.
+                    {language === "PL" ? "Są to moje najświeższe projekty, które pokazują moje aktualne umiejętności front endowe." : "These are my latest projects that show my current front end skills." }
+                    
                 </p>
             </Text>
             
