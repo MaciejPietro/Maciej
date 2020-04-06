@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Maciej/static/css/main.99b7e418.chunk.css",
-    "main.js": "/Maciej/static/js/main.f91ba93b.chunk.js",
-    "main.js.map": "/Maciej/static/js/main.f91ba93b.chunk.js.map",
-    "runtime-main.js": "/Maciej/static/js/runtime-main.0786cc6b.js",
-    "runtime-main.js.map": "/Maciej/static/js/runtime-main.0786cc6b.js.map",
-    "static/js/2.fcf47c3b.chunk.js": "/Maciej/static/js/2.fcf47c3b.chunk.js",
-    "static/js/2.fcf47c3b.chunk.js.map": "/Maciej/static/js/2.fcf47c3b.chunk.js.map",
+    "main.css": "/Maciej/static/css/main.71f5e097.chunk.css",
+    "main.js": "/Maciej/static/js/main.5f9bef82.chunk.js",
+    "main.js.map": "/Maciej/static/js/main.5f9bef82.chunk.js.map",
+    "runtime-main.js": "/Maciej/static/js/runtime-main.a24e26fb.js",
+    "runtime-main.js.map": "/Maciej/static/js/runtime-main.a24e26fb.js.map",
+    "static/js/2.86e7d950.chunk.js": "/Maciej/static/js/2.86e7d950.chunk.js",
+    "static/js/2.86e7d950.chunk.js.map": "/Maciej/static/js/2.86e7d950.chunk.js.map",
     "index.html": "/Maciej/index.html",
-    "precache-manifest.291e6ba4a824349116a41dde4c5a1014.js": "/Maciej/precache-manifest.291e6ba4a824349116a41dde4c5a1014.js",
+    "precache-manifest.0540a4ac09bc1f42b1e5c60987c721f8.js": "/Maciej/precache-manifest.0540a4ac09bc1f42b1e5c60987c721f8.js",
     "service-worker.js": "/Maciej/service-worker.js",
-    "static/css/main.99b7e418.chunk.css.map": "/Maciej/static/css/main.99b7e418.chunk.css.map",
-    "static/js/2.fcf47c3b.chunk.js.LICENSE.txt": "/Maciej/static/js/2.fcf47c3b.chunk.js.LICENSE.txt",
+    "static/css/main.71f5e097.chunk.css.map": "/Maciej/static/css/main.71f5e097.chunk.css.map",
+    "static/js/2.86e7d950.chunk.js.LICENSE.txt": "/Maciej/static/js/2.86e7d950.chunk.js.LICENSE.txt",
     "static/media/Project1.jpg": "/Maciej/static/media/Project1.2bf00d4c.jpg",
     "static/media/Project3.jpg": "/Maciej/static/media/Project3.b14e82a4.jpg",
     "static/media/Rockout.ttf": "/Maciej/static/media/Rockout.04dc9ffd.ttf",
@@ -24,9 +24,9 @@
     "static/media/water.jpg": "/Maciej/static/media/water.b97da33d.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.0786cc6b.js",
-    "static/js/2.fcf47c3b.chunk.js",
-    "static/css/main.99b7e418.chunk.css",
-    "static/js/main.f91ba93b.chunk.js"
+    "static/js/runtime-main.a24e26fb.js",
+    "static/js/2.86e7d950.chunk.js",
+    "static/css/main.71f5e097.chunk.css",
+    "static/js/main.5f9bef82.chunk.js"
   ]
 }
