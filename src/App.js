@@ -50,7 +50,7 @@ const App = (props) => {
           <CursorProvider>
             <CurrentSectionProvider>
               <Global />
-              {/* <Cursor /> */}
+              <Cursor />
               <Router>
                 <Route path='/Maciej/' component={Base}/>
               </Router>
