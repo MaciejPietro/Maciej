@@ -52,7 +52,7 @@ const App = (props) => {
               <Global />
               <Cursor />
               <Router>
-                <Route path='/' component={Base}/>
+                <Route path='/Maciej-Portfolio/' component={Base}/>
               </Router>
             </CurrentSectionProvider>
           </CursorProvider>
