@@ -184,7 +184,7 @@ const LineNav = ({changeSection}) => {
     return (
         <Wrapper> 
 
-            <StyledLink exact to='/Maciej' >
+            <StyledLink exact to='/Maciej/' >
                 <HomeCircle data-key="home" onClick={changeSection} section={section} onMouseOver={() => setCursor("hoverAble")} onMouseLeave={() => setCursor("default")} >
                     <Span data-key="home"/>
                 </HomeCircle>
