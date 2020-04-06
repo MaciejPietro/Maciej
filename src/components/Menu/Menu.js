@@ -168,7 +168,7 @@ function Menu({ changeSection }) {
 
                 <StyledLink to='/Maciej/skills'>
                     <ListItem  isBarOpen={isBarOpen} ref={item3} delay={"0.5s"} data-key="skills" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection}  dark>
-                        {language === "PL" ? "Umiejetnosci." : "Skills."}
+                        {language === "PL" ? "Umieejetnosci." : "Skills."}
                     </ListItem>
                 </StyledLink>
 
