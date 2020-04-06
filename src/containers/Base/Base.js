@@ -160,7 +160,7 @@ const Base = (props) => {
 
                         <Block ref={block} section={section} className={isBarOpen ? "fixed-top" : ""}/>
                             <Switch>    
-                                <Route path='/Maciej-Portfolio/'  component={Home} exact/>
+                                <Route path='/Maciej-Portfolio'  component={Home} exact/>
                                 <Route path='/about'  component={About}/>
                                 <Route  path='/skills'  component={Skills}/>
                                 <Route  path='/projects'  component={Projects}/>
