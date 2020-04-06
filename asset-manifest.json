@@ -1,22 +1,32 @@
 {
   "files": {
-    "main.css": "/Maciej-Portfolio/static/css/main.54da349e.chunk.css",
-    "main.js": "/Maciej-Portfolio/static/js/main.97255ab7.chunk.js",
-    "main.js.map": "/Maciej-Portfolio/static/js/main.97255ab7.chunk.js.map",
+    "main.css": "/Maciej-Portfolio/static/css/main.99b7e418.chunk.css",
+    "main.js": "/Maciej-Portfolio/static/js/main.f5aaaa8e.chunk.js",
+    "main.js.map": "/Maciej-Portfolio/static/js/main.f5aaaa8e.chunk.js.map",
     "runtime-main.js": "/Maciej-Portfolio/static/js/runtime-main.d1809b42.js",
     "runtime-main.js.map": "/Maciej-Portfolio/static/js/runtime-main.d1809b42.js.map",
-    "static/js/2.6db5f5e1.chunk.js": "/Maciej-Portfolio/static/js/2.6db5f5e1.chunk.js",
-    "static/js/2.6db5f5e1.chunk.js.map": "/Maciej-Portfolio/static/js/2.6db5f5e1.chunk.js.map",
+    "static/js/2.6f260dd7.chunk.js": "/Maciej-Portfolio/static/js/2.6f260dd7.chunk.js",
+    "static/js/2.6f260dd7.chunk.js.map": "/Maciej-Portfolio/static/js/2.6f260dd7.chunk.js.map",
     "index.html": "/Maciej-Portfolio/index.html",
-    "precache-manifest.493fbb85b7e9b7334620d6debd6f4f30.js": "/Maciej-Portfolio/precache-manifest.493fbb85b7e9b7334620d6debd6f4f30.js",
+    "precache-manifest.bfe16e0e3a269d829b2ffd2b80c1f33d.js": "/Maciej-Portfolio/precache-manifest.bfe16e0e3a269d829b2ffd2b80c1f33d.js",
     "service-worker.js": "/Maciej-Portfolio/service-worker.js",
-    "static/css/main.54da349e.chunk.css.map": "/Maciej-Portfolio/static/css/main.54da349e.chunk.css.map",
-    "static/js/2.6db5f5e1.chunk.js.LICENSE.txt": "/Maciej-Portfolio/static/js/2.6db5f5e1.chunk.js.LICENSE.txt"
+    "static/css/main.99b7e418.chunk.css.map": "/Maciej-Portfolio/static/css/main.99b7e418.chunk.css.map",
+    "static/js/2.6f260dd7.chunk.js.LICENSE.txt": "/Maciej-Portfolio/static/js/2.6f260dd7.chunk.js.LICENSE.txt",
+    "static/media/Project1.jpg": "/Maciej-Portfolio/static/media/Project1.2bf00d4c.jpg",
+    "static/media/Project3.jpg": "/Maciej-Portfolio/static/media/Project3.b14e82a4.jpg",
+    "static/media/Rockout.ttf": "/Maciej-Portfolio/static/media/Rockout.04dc9ffd.ttf",
+    "static/media/Tamira.otf": "/Maciej-Portfolio/static/media/Tamira.b5cefe74.otf",
+    "static/media/meBike.jpg": "/Maciej-Portfolio/static/media/meBike.f91cd3b6.jpg",
+    "static/media/meLaptop.jpg": "/Maciej-Portfolio/static/media/meLaptop.c3c3e762.jpg",
+    "static/media/norway.jpg": "/Maciej-Portfolio/static/media/norway.073a0b83.jpg",
+    "static/media/road.jpg": "/Maciej-Portfolio/static/media/road.2ddc11fe.jpg",
+    "static/media/skillsLaptop.jpg": "/Maciej-Portfolio/static/media/skillsLaptop.1056d130.jpg",
+    "static/media/water.jpg": "/Maciej-Portfolio/static/media/water.b97da33d.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.d1809b42.js",
-    "static/js/2.6db5f5e1.chunk.js",
-    "static/css/main.54da349e.chunk.css",
-    "static/js/main.97255ab7.chunk.js"
+    "static/js/2.6f260dd7.chunk.js",
+    "static/css/main.99b7e418.chunk.css",
+    "static/js/main.f5aaaa8e.chunk.js"
   ]
 }
