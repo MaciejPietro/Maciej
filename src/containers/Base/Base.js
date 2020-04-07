@@ -9,6 +9,7 @@ import { CurrentSectionContext } from '../../contexts/CurrentSectionContex'
 
 
 import { TimelineMax} from "gsap";
+import { TweenMax } from 'gsap/all';
 import CSSPlugin from 'gsap/CSSPlugin';
 import styled from 'styled-components'
 
@@ -94,7 +95,7 @@ const Base = (props) => {
 
     useEffect(() => { 
         const animateHomeBlock = () => {  
-            tl.fromTo(block.current, 2, {width: "110vw", margin: 0}, {width: "44vw", margin: ifMobile ? "0 50vw 0 0":  "3vw 50vw 3vw 5vw"});
+            TweenMax.fromTo(block.current, 2, {width: "110vw", margin: 0}, {width: "44vw", margin: ifMobile ? "0 50vw 0 0":  "3vw 50vw 3vw 5vw"});
         }
         animateHomeBlock();
         return () => ignore.current = true 
@@ -104,9 +105,9 @@ const Base = (props) => {
         const toggleSidebar = () => {
             setBarOpen(!isBarOpen)
             if(isBarOpen) {
-                tl.to(block.current, 0, eval(section))
+                TweenMax.to(block.current, 0, eval(section))
             } else if (!isBarOpen) {
-                tl.to(block.current, 0, {width: "100vw", height: "100vh", margin: "0"})
+                TweenMax.to(block.current, 0, {width: "100vw", height: "100vh", margin: "0"})
             }
         }           
     
@@ -116,7 +117,7 @@ const Base = (props) => {
             const currentSection = eval(e.target.dataset.key)
     
             if(ignore.current) return;
-            tl.to(block.current, 0, {width: ifMobile ? "100vw":  "90vw", height: ifMobile ? "100vh" :  "90vh", margin: `${margin}`})
+            TweenMax.to(block.current, 0, {width: ifMobile ? "100vw":  "90vw", height: ifMobile ? "100vh" :  "90vh", margin: `${margin}`})
             setTimeout(() => {
                 tl.to(block.current, 0.6, currentSection)
             }, 2000)
