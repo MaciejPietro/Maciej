@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useEffect, useContext } from 'react'
 import { TimelineMax} from "gsap";
+import CSSPlugin from 'gsap/CSSPlugin';
 import { NavbarContext } from '../../contexts/NavbarContext'
 import Introduce from '../../components/Introduce/Introduce'
 import Pictures from '../../components/Pictures/Pictures'

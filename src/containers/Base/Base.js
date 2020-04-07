@@ -7,7 +7,9 @@ import { LanguageContext } from '../../contexts/LanguageContext'
 import { NavbarContext } from '../../contexts/NavbarContext'
 import { CurrentSectionContext } from '../../contexts/CurrentSectionContex'
 
+
 import { TimelineMax} from "gsap";
+import CSSPlugin from 'gsap/CSSPlugin';
 import styled from 'styled-components'
 
 

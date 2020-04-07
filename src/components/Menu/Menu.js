@@ -163,7 +163,7 @@ function Menu({ changeSection }) {
             <List >
                 <StyledLink exact to='/Maciej/'>
                     <ListItem isBarOpen={isBarOpen} ref={item}  delay={"0.5s"} data-key="home" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} pink>
-                        {language === "PL" ? "Glowna." : "Home."}
+                        {language === "PL" ? "Gowna." : "Home."}
                     </ListItem>
                 </StyledLink>
 
