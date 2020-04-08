@@ -2,11 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-width: 35vw;
+width: 10vw;
 height: 89vh;
 display: flex;
 justify-content: center;
-border: 2px solid blue;
 `
 
 

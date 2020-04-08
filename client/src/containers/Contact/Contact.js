@@ -1,55 +1,67 @@
-import React, { useRef, useEffect} from 'react'
+import React, { useRef, useEffect, useState} from 'react'
 import styled from 'styled-components'
 import ContactHeader from '../../components/ContactHeader/ContactHeader'
 import ContactForm from '../../components/ContactForm/ContactForm'
 import ContactLinks from '../../components/ContactLinks/ContactLinks'
+import Loading from '../../components/Loading/Loading'
 
 const Wrapper = styled.section`
-display: flex;
 align-items: center;
+display: flex;
+opacity: 0;
+animation: showContact 1s forwards 3s;
 `
 
 function Contact() {
     let wrapper = useRef(null);
-    let ignore = useRef(false)
-    let ifMobile = window.innerWidth < 676
+    let text = useRef(null);
+    let ignore = useRef(false);
+    // let ifMobile = window.innerWidth < 676;
+    const [ sent, setSent ] = useState(false)
+
 
     useEffect(() => {
+        const arrow = document.querySelector('.scroll-icon')
         window.scrollTo(0,0)
         document.querySelector('body').style.overflow ="hidden";
-        let i = 0;
         window.scrollTo(0, 0)
 
-    
-        const scroll = e => {
-            if(ignore.current) return
-            i += e.deltaY / 100
-              if(i < 4)  {
-                    wrapper.current.style.width = "60vw";
-                    if(i === 0) {
-                        
-                        i = 2
-                    }
-                }
-                if(i > 15)  {      
-                    wrapper.current.style.width = "5vw";
-                    if(i === 15) {
-                        i = 13
-                    }
-                }                                  
-        } 
-            window.addEventListener('mousewheel', e => scroll(e))
-        
-        return () => ignore.current = true   
+        window.addEventListener('mousewheel', (e) => {
+            if(ignore.current) return;
+            if(e.deltaY === 100) {
+                wrapper.current.classList.add("contact-header__visibility")
+                if(window.innerWidth < 676) return;
+                    arrow.classList.add('rotateArrow')
+            } else if (e.deltaY === -100) {
+                wrapper.current.classList.remove("contact-header__visibility")
+                if(window.innerWidth < 676) return;
+                    arrow.classList.remove('rotateArrow')             
+            }
         })
+
+        return () => ignore.current = true
+        }, [])
+
+
+    function handleHeader(e) {
+          wrapper.current.classList.toggle("contact-header__visibility")   
+    }
+
+    function mailSent() {
+        setSent(true)
+        wrapper.current.classList.remove("contact-header__visibility")
+    }
 
 
     return (
-        <Wrapper>
-            <ContactHeader wrapper={wrapper}/>
-            <ContactForm/>
-            <ContactLinks />
-        </Wrapper>
+        <>
+            <Loading />
+            <Wrapper>
+                <ContactHeader wrapper={wrapper} text={text} click={handleHeader} sent={sent} />  
+                <ContactForm mailSent={mailSent}/>
+                <ContactLinks />       
+            </Wrapper>
+        </>
     )
 }
 

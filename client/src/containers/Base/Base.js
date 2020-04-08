@@ -28,7 +28,7 @@ import Projects from '../Projects/Projects'
 import Contact from '../Contact/Contact'
 
 const SidebarWrapper = styled.div`
-z-index: 2;
+z-index: 4;
 width: 0;
 position: fixed!important;
 top: 0;
@@ -69,9 +69,8 @@ display: flex;
 color: #fff;
 margin: 0;
 flex-shrink: 0;
-z-index: 1;
+z-index: 2;
 transition: .6s;
-display: none;
 `
 
 
@@ -84,13 +83,13 @@ const Base = (props) => {
     const {  setBarVisible } = useContext(NavbarContext);
     const tl = new TimelineMax()
     const ifMobile = window.innerWidth < 676;
-    let margin = ifMobile ? "0" : "3vw 5vw 3vw 5vw";
+    let margin = ifMobile ? "0" : "5vh 5vw 5vh 5vw";
  
     const home = {width: ifMobile ? "50vw" : "44vw", height: ifMobile ? "100vh" : "90vh", margin: ifMobile ? "0 50vw 0 0" : "3vw 50vw 3vw 5vw"};
     const about = {width: "0vw", marginRight: "95vw"};
     const skills = {width: ifMobile ? "100vw":  "90vw",   margin: ifMobile ? "30vh 0 0 0" : "50vh 5vw 3vw 5vw" , height: ifMobile ? "70vh":  "50vh"};
     const projects = {width: ifMobile ? "100vw" : "90vw", height: "50vh", margin: `${margin}`};
-    const contact = {width: ifMobile ? "100vw" : "90vw", height: "50vh", margin: `${margin}`};
+    const contact = {width: "0vw", marginLeft: "95vw"};
     let ignore = useRef(false)
 
 
@@ -123,6 +122,7 @@ const Base = (props) => {
             setTimeout(() => {
                 tl.to(block.current, 0.6, currentSection)
             }, 2000)
+            console.log(currentSection)
         }
 
 

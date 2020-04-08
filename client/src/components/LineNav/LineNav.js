@@ -18,7 +18,7 @@ div {
     transition: all 0.6s;
     display: flex;
     flex-direction: column;
-    cursor: none;
+    cursor: pointer;
     transform: translate(100px);   
     animation: slideFromRight 3s forwards;
     &:before {

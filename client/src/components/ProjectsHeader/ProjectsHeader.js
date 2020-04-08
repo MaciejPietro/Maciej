@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 width: 70vw;
 height: 50vh;
 position : absolute;
-z-index: 1;
+z-index: 2;
 margin: 4vh 0 0 0;
 display: flex;
 flex-direction: row;

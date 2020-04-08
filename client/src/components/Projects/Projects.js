@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Project1 from '../../img/Project1.jpg'
 import Project3 from '../../img/Project3.jpg'
-import { Mug, Rocket } from '../../contexts/LanguageIcons'
+import { Rocket } from '../../contexts/LanguageIcons'
 import { LanguageContext } from '../../contexts/LanguageContext'
 
 

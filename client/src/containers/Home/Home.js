@@ -3,15 +3,8 @@ import Letters from '../../components/Letters/Letters'
 import LettersMobile from '../../components/Letters/LettersMobile'
 import Loading from '../../components/Loading/Loading'
 import {TimelineMax, Bounce } from "gsap";
-import styled, {createGlobalStyle}from 'styled-components'
+import styled from 'styled-components'
 
-const Global = createGlobalStyle`
-body {
-      overflow-y: scroll;
-      overflow-x: hidden;
-
-  }
-`
 
 
 const HeaderWrapper = styled.div`
@@ -20,7 +13,7 @@ display: flex;
 flex-flow: row wrap;
 top: 28%;
 left: 38%;
-z-index: 1;
+z-index: 2;
  @media (max-width: 991px) {
     left: 28%;
  }
@@ -76,7 +69,6 @@ const Home = (props) => {
 
         return (    
             <>  
-                    <Global />
                     <Loading />
                     <HeaderWrapper>    
                         {window.innerWidth < 476 || window.innerHeight < 476 ?  <LettersMobile /> : <Letters />}

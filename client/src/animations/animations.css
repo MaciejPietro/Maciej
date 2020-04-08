@@ -233,18 +233,24 @@
 
   .scroll-icon {
     animation: 2s scrollArrow infinite;
+    transition: 1s;
   }
 
   @keyframes scrollArrow {
     0% {
-      transform: translateY(0);
+      margin-top: 0;
     }
     50% {
-      transform: translateY(0.7rem);
+      margin-top: 16px;
     }
     0% {
-      transform: translateY(0);
+      margin-top: 0;
     }
+  }
+
+  .rotateArrow {
+    transform: rotate(-180deg) translateY(120px);
+    transition: 1s;
   }
 
 
@@ -374,5 +380,22 @@
     100% {
       opacity: 1;
       transform: perspective(80rem) rotateY(30deg) translateY(0rem);
+    }
+  }
+
+  /* CONTACT  */
+
+  .contact-header__visibility {
+    width: 10vw!important;
+  }
+
+  
+  @keyframes  showContact {
+    0% {
+     opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
     }
   }

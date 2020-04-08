@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 position: absolute;
 height: 200vh;
 padding: 0 6vw 0 0;
-z-index: 1;
+z-index: 3;
 transition: 1s;
 opacity: ${({isBarOpen}) => isBarOpen ? ".6" : "1"};
 

@@ -3,15 +3,23 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 const Wrapper = styled.div`
+position: absolute;
+left: 22vw;
 width: 35vw;
 display: flex;
 justify-content: center;
-border: 2px solid grey;
+z-index: 0;
+@media (max-width: 1400px) {
+    width: 45vw;
+}
+@media (max-width: 676px) {
+    width: 65vw;
+    left: 12vw;
+}
 `
 const Form = styled.form`
 width: 100%;
 text-align: center;
-
 `
 
 const Row = styled.div`
@@ -75,21 +83,39 @@ z-index: 1;
 }
 `
 
-function ContactFrom() {
-    const [name, setName] = useState("Maciej")
-    const [email, setEmail] = useState("Maciej@wp.pl")
-    const [message, setMessage] = useState("asdadasdasdasdeded")
+function ContactFrom({mailSent}) {
+    const [name, setName] = useState("Name")
+    const [email, setEmail] = useState("E-mail")
+    const [message, setMessage] = useState("Enter your message")
 
-const sendMail = async(e) => {
-    e.preventDefault()
-    console.log("mail snede")
 
-    const form = await axios.post('/api/form', {
-        name,
-        email,
-        message
-    })
-}
+    const sendMail = async(e) => {
+        e.preventDefault()
+        const form = await axios.post('/api/form', {
+            name,
+            email,
+            message
+        })
+        setName("Name")
+        setEmail("E-mail")
+        setMessage("Enter your message")
+    }
+
+    const fillMail = (e) => {
+        switch (e.target.name) {
+            case "name": 
+                setName(e.target.value)
+                break;
+            case "email": 
+                setEmail(e.target.value)
+                break;
+            case "feedback": 
+                setMessage(e.target.value)
+                break;
+            default:
+                alert("error")
+        }
+    }
 
     return (
 
@@ -99,18 +125,18 @@ const sendMail = async(e) => {
 				<Label htmlfor="userName">
 					
 				</Label>
-				<Input name="name" type="text" placeholder="John Smith"></Input>
+				<Input name="name" type="text" placeholder={name} onChange={fillMail}></Input>
 			</Row>
 			<Row>
 				<Label htmlfor="userEmail">
 				
 				</Label>
-				<Input name="email" type="email" placeholder="jsmith@domain.com"></Input>
+				<Input name="email" type="email" placeholder={email} onChange={fillMail}></Input>
 			</Row>
 			<Row>
-				<Textarea name="feedback" rows="10" placeholder="Enter your message"></Textarea>
+				<Textarea name="feedback" rows="10" placeholder={message} onChange={fillMail}></Textarea>
 			</Row>
-            <Button type="submit">Send</Button>
+            <Button type="submit" onClick={mailSent}>Send</Button>
 	
 		</Form>
 	</Wrapper>

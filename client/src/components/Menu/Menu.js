@@ -141,7 +141,6 @@ function Menu({ changeSection }) {
             item3.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .70s forwards" : "flip-out-menu 1s"
             item4.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out .90s forwards" : "flip-out-menu 1s"
             item5.current.style.animation = isBarOpen ? "flip-in-menu .8s ease-out 1.1s forwards" : "flip-out-menu 1s"
-
         }
             cos()
             fadeIn()
@@ -180,13 +179,13 @@ function Menu({ changeSection }) {
                 </StyledLink>
 
                 <StyledLink to='/Maciej/projects'>
-                    <ListItem isBarOpen={isBarOpen} ref={item4} delay={"0.5s"} data-key="projects"onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} yellow>
+                    <ListItem isBarOpen={isBarOpen} ref={item4} delay={"0.5s"} data-key="projects" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} yellow>
                         {language === "PL" ? "Projekty." : "My Projects."}
                     </ListItem>
                 </StyledLink>
 
                 <StyledLink to='/Maciej/contact'>
-                    <ListItem isBarOpen={isBarOpen} ref={item5} delay={"0.5s"} onMouseEnter={enterItem} onMouseLeave={leaveItem} creme>
+                    <ListItem isBarOpen={isBarOpen} ref={item5} delay={"0.5s"} data-key="contact" onMouseEnter={enterItem} onMouseLeave={leaveItem} onClick={changeSection} creme>
                         {language === "PL" ? "Kontakt." : "Contact."}
                     </ListItem>
                 </StyledLink>

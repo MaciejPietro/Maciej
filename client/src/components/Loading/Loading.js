@@ -7,8 +7,8 @@ const Wrapper = styled.span`
     height: 60px;
     position: absolute;
     border: 4px solid #Fff;
-    top: 46%;
-    left: 48%;
+    top: 46vh;
+    left: 46vw;
     animation: loader 1.6s infinite ease, loaderFadeOut .6s forwards 1.6s;
     z-index: 100;
 `

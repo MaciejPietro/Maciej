@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useContext, useRef} from 'react'
 import { NavbarContext } from '../../contexts/NavbarContext'
 import ProjectsHeader from '../../components/ProjectsHeader/ProjectsHeader'
@@ -25,17 +26,18 @@ useEffect(() => {
 
     const scroll = e => {
         i += e.deltaY / 100
-        if(i > 3 && !ifMobile)  {
+        console.log(i)
+        if(i > 0 && !ifMobile)  {
             wrapper.current.style.height = "120%";
         }
-        if(i > 8 && !ifMobile) {
+        if(i > 5 && !ifMobile) {
             body.style.overflowY = "scroll"
         }
-        if(i > 10 && !ifMobile) {
+        if(i > 6 && !ifMobile) {
             des1.current.style.animation = "fadeIn .8s forwards"
             pro1.current.style.animation = "fadeInLeft .8s forwards .6s"
         }
-        if(i > 12 && !ifMobile) {
+        if(i > 9 && !ifMobile) {
             des2.current.style.animation = "fadeIn .8s forwards"
             pro2.current.style.animation = "fadeInRight .8s forwards .6s"
         }
@@ -46,7 +48,7 @@ useEffect(() => {
             scroll(e)
         })
     return () => ignore.current = true
-}, [body.style.overflowY])
+}, [])
     return (
         <>
             <Loading />
