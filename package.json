@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MaciejPietro/Maciej-Portfolio.git"
+    "url": "git+https://github.com/MaciejPietro/Maciej.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MaciejPietro/Maciej-Portfolio/issues"
+    "url": "https://github.com/MaciejPietro/Maciej/issues"
   },
-  "homepage": "https://github.com/MaciejPietro/Maciej-Portfolio#readme",
+  "homepage": "https://github.com/MaciejPietro/Maciej#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "concurrently": "^5.1.0",
