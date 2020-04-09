@@ -39,8 +39,7 @@ useEffect(() => {
                     break;
                 default:
                     document.getElementById("text").innerHTML += txt.charAt(i);
-            }
-            
+            }    
         }, 16)}, 3000)
 
 
