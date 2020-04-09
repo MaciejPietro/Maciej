@@ -16,23 +16,23 @@ z-index: 6;
 animation: slideFromLeft 3s forwards;
     &:hover {
         span:first-child {
-            width: ${({isBarOpen}) => isBarOpen ? "2rem" : "1.8rem"};
-            margin-left: ${({isBarOpen}) => isBarOpen ? "0rem" : "-0.2rem"};
+            width: ${({isBarOpen}) => isBarOpen ? "2rem" : "2.1rem"};
+            margin-left: ${({isBarOpen}) => isBarOpen ? "0rem" : "-0.12rem"};
         }
         span:nth-child(2) {
-            width: 2.2rem;
-            margin-left: -0.6rem;
+            width: 2.3rem;
+            margin-left: -0.5rem;
         }
         span:nth-child(3) {
-            width: ${({isBarOpen}) => isBarOpen ? "2rem" : "2rem"};
-            margin-left: ${({isBarOpen}) => isBarOpen ? "0rem" : "-0.4rem"};
+            width: ${({isBarOpen}) => isBarOpen ? "2.0rem" : "2.1rem"};
+            margin-left: ${({isBarOpen}) => isBarOpen ? "0rem" : "-0.3rem"};
         }
         h6 {
             transform: rotate(0deg);
         }
     }
     @media (max-width: 676px) {
-        top: .6rem;
+        top: .8rem;
         left:  80%;
         background-color: white;
         border-radius: 50%;

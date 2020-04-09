@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import skillsLaptop from '../../img/skillsLaptop.jpg'
 import ScrollIcon from '../ScrollIcon/ScrollIcon'
+import { LanguageContext } from '../../contexts/LanguageContext'
 
 const Wrapper = styled.div`
 position: absolute;
@@ -131,11 +132,12 @@ color: white;
 
 function SkillsHeader({txtWrapper, isBarOpen}) {
 
+    const { language } = useContext(LanguageContext);
 
     return (
         <Wrapper isBarOpen={isBarOpen}>
-            <My>MY </My><br/>
-            <Skills>Skills </Skills>
+            <My>{language === "PL" ? "MOJE" : "MY"} </My><br/>
+            <Skills>{language === "PL" ? "Skille" : "Skills"}</Skills>
             <Image img={skillsLaptop}/>
             <Text id="text" ref={txtWrapper}/>    
         </Wrapper>

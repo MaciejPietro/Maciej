@@ -50,6 +50,9 @@ overflow: hidden;
 @media (max-width: 991px) {
     font-size: 2rem;
 }
+@media (max-width: 676px) {
+    display: none;
+}
 `
 
 const Button = styled.button`           

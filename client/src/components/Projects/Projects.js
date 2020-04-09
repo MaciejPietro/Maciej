@@ -21,10 +21,10 @@ transition: 1s;
     height: 200%;
 }
 @media (max-width: 547px) {
-    padding-top: 9rem;
+    padding-top: 12rem;
 }
 @media (max-width: 400px) {
-    padding-top: 14rem;
+    padding-top: 16rem;
 }
 `
 
