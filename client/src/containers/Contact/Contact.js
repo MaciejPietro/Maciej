@@ -16,15 +16,14 @@ function Contact() {
     let wrapper = useRef(null);
     let text = useRef(null);
     let ignore = useRef(false);
-    // let ifMobile = window.innerWidth < 676;
     const [ sent, setSent ] = useState(false)
 
 
     useEffect(() => {
+        document.querySelector('body').style.overflow = "hidden"
         const arrow = document.querySelector('.scroll-icon')
         window.scrollTo(0,0)
-        document.querySelector('body').style.overflow ="hidden";
-        window.scrollTo(0, 0)
+
 
         window.addEventListener('mousewheel', (e) => {
             if(ignore.current) return;

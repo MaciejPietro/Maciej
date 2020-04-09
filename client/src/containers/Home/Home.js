@@ -45,7 +45,7 @@ const Home = (props) => {
 
 
     useEffect(() => { 
-
+        
         if(ignore.current) return;
         const dotEntrance = () => {
             const tl = new TimelineMax();
