@@ -134,13 +134,10 @@ function SkillsHeader({txtWrapper, isBarOpen}) {
 
     return (
         <Wrapper isBarOpen={isBarOpen}>
-            <ScrollIcon top={"86vh"} left={"-40vw"} color={"white"} opacity={"0.5"}/>
             <My>MY </My><br/>
             <Skills>Skills </Skills>
             <Image img={skillsLaptop}/>
-            <Text id="text" ref={txtWrapper}>
-            </Text>
-       
+            <Text id="text" ref={txtWrapper}/>    
         </Wrapper>
     )
 }

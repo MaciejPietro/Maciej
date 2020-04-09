@@ -96,7 +96,7 @@ const Base = (props) => {
 
     useEffect(() => { 
         const animateHomeBlock = () => {  
-            TweenMax.fromTo(block.current, 2, {width: "110vw", margin: 0}, {width: "44vw", margin: ifMobile ? "0 50vw 0 0":  "3vw 50vw 3vw 5vw"});
+            TweenMax.fromTo(block.current, 2, {width: "110vw", margin: 0}, {width: "50vw", margin: ifMobile ? "0 50vw 0 0" :  "3vw 50vw 3vw 5vw"});
         }
         animateHomeBlock();
         return () => ignore.current = true 
