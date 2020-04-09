@@ -96,9 +96,6 @@ function ContactFrom({mailSent}) {
             email,
             message
         })
-        setName("Name")
-        setEmail("E-mail")
-        setMessage("Enter your message")
     }
 
     const fillMail = (e) => {
